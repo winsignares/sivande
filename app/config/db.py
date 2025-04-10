@@ -15,4 +15,4 @@ app.secret_key = "ingweb"
 
 
 db = SQLAlchemy(app)
-ma = Marsmallow(app)
+ma = Marshmallow(app)
