@@ -19,7 +19,9 @@ def all_task():
 @ruta_task.route("/savetask", methods=["POST"])
 def tasksave():
     nametask = request.json["nametask"]
-    newtask = Task(nametask)
+    id_user_fk = request.json["id_user_fk"]
+    id_category_fk = request.json["id_category_fk"]
+    newtask = Task(nametask,id_user_fk,id_category_fk)
     db.session.add(newtask)
     db.session.commit()
     return "datos guardados con exito"
