@@ -1,39 +1,34 @@
-from flask import Flask, Bluenprint, request, redirect, render_template, jsonify
+from flask import Flask, Blueprint, request, redirect, render_template, jsonify
+from config.db import app, db, ma
 
-from config.db import db, app, ma
-
+#llamamos al modelo de User
 from models.UserModel import Users, UsersSchema
+
+ruta_user = Blueprint("route_user", __name__)
 
 usuario_schema = UsersSchema()
 usuarios_schema = UsersSchema(many=True)
 
-ruta_user = Bluenprint("ruta_user", __name__)
-
 @ruta_user.route("/user", methods=["GET"])
-def all_user():
+def alluser():
     resultAll = Users.query.all()
-    resp = usuarios_schema(resultAll)
+    respo = usuarios_schema.dump(resultAll)
+    return jsonify(respo)
 
-    return jsonify(resp)
-
-@ruta_user.route("/saveuser", methods=["POST"])
-def save_user():
-    fullname = request.json["fullname"]
-    email = request.json["email"]
-
-    newUser = Users(fullname, email)
-    db.session.add(newUser)
+@ruta_user.route("/registrarUsuario", methods=['POST'])
+def registrarUsuario():
+    fullname= request.json['fullname']
+    email = request.json['email']
+    newuser = Users(fullname, email)
+    db.session.add(newuser)
     db.session.commit()
+    return "Guardado"
 
-    return "datos guardado con exito"
+@ruta_user.route("eliminarUsuario", methods=['DELETE'])
+def eliminarUsuario():
+    id = request.json['id'] 
+    usuario = Users.query.get(id)    
+    db.session.delete(usuario)
+    db.session.commit()     
+    return jsonify(usuario_schema.dump(usuario))
 
-
-@ruta_user.route("/delteeuser", methods=["DELETE"])
-def delete_user():
-
-    id = request.json["id"]
-    user = Users.query.get(id)
-    db.session.delete(user)
-    db.session.commit()
-
-    return "dato eliminado con exito"
