@@ -1,4 +1,4 @@
-version: '3.8'  # Specify a version for better compatibility
+version: '3.8' # Specify a version for better compatibility
 services:
   db:
     image: mysql:8.0
@@ -7,14 +7,15 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tasksul
-      MYSQL_ROOT_HOST: '%'  # Allow root to connect from any host
+      MYSQL_DATABASE: sivande_db
+      MYSQL_ROOT_HOST: '%' # Allow root to connect from any host
     ports:
-      - "3306:3306"
+      - "3308:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-    healthcheck:  # Add health check to ensure MySQL is ready
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+    healthcheck:
+      # Add health check to ensure MySQL is ready
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -25,7 +26,7 @@ services:
     restart: always
     depends_on:
       db:
-        condition: service_healthy  # Wait for MySQL to be healthy
+        condition: service_healthy # Wait for MySQL to be healthy
     environment:
       DB_HOST: db
       DB_USER: root
