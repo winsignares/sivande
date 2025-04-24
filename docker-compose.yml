@@ -10,7 +10,7 @@ services:
       MYSQL_DATABASE: sivande_db
       MYSQL_ROOT_HOST: '%' # Allow root to connect from any host
     ports:
-      - "3308:3306"
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
