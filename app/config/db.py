@@ -7,7 +7,7 @@ app = Flask(__name__)
 user = "root"
 password = "root"
 direc = "db"
-namebd = "tasksul"
+namebd = "sivande_db"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{direc}/{namebd}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
