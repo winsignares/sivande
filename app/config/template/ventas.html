@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+    <link rel="stylesheet" href="../static/ventas.css">
+</head>
+
+<body>
+    <div class="vista-container">
+        <header>
+            <span class="home-icon" onclick="redirectToMenu()">🏠</span>
+            <h2>Venta de productos</h2>
+        </header>
+        <form class="ventas-form">
+            <!-- Identificación -->
+            <div class="input-group">
+                <label for="identificacion">Identificación</label>
+                <input type="text" id="identificacion" name="identificacion">
+            </div>
+
+            <!-- Datos del cliente -->
+            <div>
+                <h3>Datos del cliente</h3>
+                <div class="client-info">
+                    <div class="input-group">
+                        <label>Nombre completo</label>
+                        <input type="text" id="nombreCompleto" name="nombreCompleto">
+                    </div>
+                    <div class="input-group">
+                        <label>Teléfono</label>
+                        <input type="text" id="telefono" name="telefono">
+                    </div>
+                    <div class="input-group">
+                        <label>Dirección</label>
+                        <input type="text" id="direccion" name="direccion">
+                    </div>
+                    <div class="input-group">
+                        <label>Fecha de venta</label>
+                        <input type="date" id="fechaVenta" name="fechaVenta">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Productos -->
+            <div>
+                <h3>Productos</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>Precio unitario</th>
+                            <th>Total</th>
+                            <th>Peso</th>
+                            <th>Kilataje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><input type="text" class="product-input"></td>
+                            <td><input type="number" class="product-input" value="1"></td>
+                            <td><input type="number" class="product-input"></td>
+                            <td><input type="number" class="product-input" readonly></td>
+                            <td><input type="number" class="product-input" step="0.01"></td>
+                            <td><input type="text" class="product-input"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-actions">
+                    <button type="button" onclick="addProductRow()">+</button>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button type="button" class="cancelar">Cancelar</button>
+                <button type="button" class="imprimir">Imprimir PDF</button>
+                <button type="submit" class="guardar">Guardar venta</button>
+            </div>
+        </form>
+    </div>
+    <script src="../static/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratos</title>
+    <link rel="stylesheet" href="../static/contratos.css">
+</head>
+
+<body>
+    <div class="vista-container">
+        <header>
+            <span class="home-icon" onclick="redirectToMenu()">🏠</span>
+            <h2>Contrato de compra y venta</h2>
+        </header>
+        <form class="contratos-form">
+            <!-- Datos del cliente -->
+            <div>
+                <h3>Datos del cliente</h3>
+                <div class="contratos-section">
+                    <div class="input-group">
+                        <label for="cedula">Cédula</label>
+                        <input type="text" id="cedula" name="cedula">
+                    </div>
+                    <div class="input-group">
+                        <label for="lugarExpedicion">Lugar de expedición</label>
+                        <input type="text" id="lugarExpedicion" name="lugarExpedicion">
+                    </div>
+                    <div class="input-group">
+                        <label for="nombres">Nombres</label>
+                        <input type="text" id="nombres" name="nombres">
+                    </div>
+                    <div class="input-group">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos">
+                    </div>
+                    <div class="input-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono">
+                    </div>
+                    <div class="input-group">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion">
+                    </div>
+                    <div class="input-group">
+                        <label for="porcentaje">Porcentaje</label>
+                        <input type="text" id="porcentaje" name="porcentaje">
+                    </div>
+                    <div class="input-group small">
+                        <label for="idContrato">ID Contrato</label>
+                        <input type="text" id="idContrato" name="idContrato">
+                    </div>
+                    <div class="input-group">
+                        <button type="button">Contratos vigentes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Datos del contrato -->
+            <div>
+                <h3>Datos del contrato</h3>
+                <div class="contratos-section">
+                    <div class="input-group">
+                        <label for="estadoContrato">Estado del contrato</label>
+                        <input type="text" id="estadoContrato" name="estadoContrato">
+                    </div>
+                    <div class="input-group">
+                        <label for="fechaContrato">Fecha</label>
+                        <input type="date" id="fechaContrato" name="fechaContrato">
+                    </div>
+                    <div class="input-group">
+                        <label for="venceContrato">Vence</label>
+                        <input type="date" id="venceContrato" name="venceContrato">
+                    </div>
+                    <div class="input-group">
+                        <label for="valorContrato">Valor del contrato</label>
+                        <input type="number" id="valorContrato" name="valorContrato">
+                    </div>
+                    <div class="input-group">
+                        <label for="valorRestitucion">Valor de restitución</label>
+                        <input type="number" id="valorRestitucion" name="valorRestitucion">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artículos -->
+            <div>
+                <h3>Artículos</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Descripción del artículo</th>
+                            <th>Clase Oro</th>
+                            <th>Peso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><input type="text" class="article-input"></td>
+                            <td><input type="text" class="article-input"></td>
+                            <td><input type="number" class="article-input" step="0.01"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-actions">
+                    <button type="button" onclick="addArticleRow()">+</button>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button type="submit" class="guardar">Guardar cambios</button>
+                <button type="button" class="nuevo" onclick="resetForm('contratos-form')">Nuevo contrato</button>
+                <button type="button" class="liquidar">Liquidar</button>
+            </div>
+        </form>
+    </div>
+    <script src="../static/app.js"></script>
+</body>
+
+</html>

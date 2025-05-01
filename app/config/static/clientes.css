@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+}
+
+.vista-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.home-icon {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.clientes-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    flex: 0 0 30%;
+    font-size: 14px;
+    color: #333;
+    padding-right: 10px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.action-buttons button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.action-buttons .guardar {
+    background-color: #007bff;
+}
+
+.action-buttons .guardar:hover {
+    background-color: #0056b3;
+}
+
+.action-buttons .nuevo {
+    background-color: #28a745;
+}
+
+.action-buttons .nuevo:hover {
+    background-color: #218838;
+}
