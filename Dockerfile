@@ -1,12 +1,15 @@
 FROM python:3.10
 
-WORKDIR /app
+WORKDIR /app  
 
-copy . .
+# Copiar todos los archivos del proyecto a /app en el contenedor
+COPY . /app/
 
-run pip install --no-cache-dir -r requirements.txt
+# Instalar las dependencias desde el requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-expose 5000
+# Exponer el puerto en el que Flask estará corriendo
+EXPOSE 5000
 
-
-CMD [ "python", "app/app.py" ]
+# Ejecutar el archivo app.py que está en la raíz del directorio
+CMD ["python", "app.py"]
