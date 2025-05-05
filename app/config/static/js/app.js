@@ -1,9 +1,12 @@
 function redirectToMenu() {
-    window.location.href = "menu.html";
+    window.location.href = "menu";
 }
 
 function redirectToVista(vista) {
-    window.location.href = vista + ".html";
+    window.location.href = vista;
+
+    console.log("RUTA : "+window.location.href);
+    
 }
 
 function resetForm(formClass) {
