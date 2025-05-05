@@ -2,7 +2,7 @@ from flask import Blueprint, render_template
 
 
 
-user_routes = Blueprint('user_routes', __name__)
+admin_routes = Blueprint('user_routes', __name__)
 
 @user_routes.route('/login', methods=['GET'])
 def login():

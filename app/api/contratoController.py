@@ -34,23 +34,15 @@ def registrar_contrato():
 
 @ruta_contrato.route("/actualizarContrato", methods=['PUT'])
 def actualizar():
-    id_cliente = request.json['id_cliente']
-    tipo_contrato = request.json['tipo_contrato']
-    fecha = request.json['fecha']
+    id_contrato = request.json['id']
     fecha_vencimiento = request.json['fecha_vencimiento']
-    estado = request.json['estado']
-    interes = request.json['interes']
-    valor_contrato = request.json['valor_contrato']
-    valor_retiro = request.json['valor_retiro']
+    fecha = request.json['fecha']
 
-    contrato = Contrato.query.get(id_cliente)
-    contrato.tipo_contrato = tipo_contrato
+
+    contrato = Contrato.query.get(id_contrato)
     contrato.fecha = fecha
     contrato.fecha_vencimiento = fecha_vencimiento
-    contrato.estado = estado
-    contrato.interes = interes
-    contrato.valor_contrato = valor_contrato
-    contrato.valor_retiro = valor_retiro
+
 
     db.session.commit()
     return jsonify(contratoSchema.dump(contrato))
@@ -59,7 +51,9 @@ def actualizar():
 @ruta_contrato.route("/eliminarContrato", methods=['DELETE'])
 def eliminar_contrato():
     id = request.json['id'] 
-    contrato = Contrato.query.get(id)    
-    db.session.delete(contrato)
+    estado = request.json['estado']
+    contrato = Contrato.query.get(id)   
+    contrato.estado = estado
+
     db.session.commit()     
     return jsonify(contratoSchema.dump(contrato))

@@ -24,7 +24,7 @@ def registrar_producto():
     nuevo_producto = Producto(descripcion, precio, peso, kilates)
     db.session.add(nuevo_producto)
     db.session.commit()
-    return f" producto {descripcion} Guardado Correctamente"
+    return f" producto Guardado Correctamente"
 
 @ruta_producto.route("/actualizarProducto", methods=['PUT'])
 def actualizar_producto():
