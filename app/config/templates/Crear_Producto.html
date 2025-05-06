@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Producto</title>
+    <link rel="stylesheet" href="../static/css/crear_producto.css">
+</head>
+
+<body>
+    <div class="vista-container">
+        <header>
+            <span class="home-icon" onclick="redirectToMenu()">🏠</span>
+            <h2>Crear Producto</h2>
+        </header>
+        <div class="productos-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total</th>
+                        <th>Kilates</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" class="product-input"></td>
+                        <td><input type="number" class="product-input" value="1"></td>
+                        <td><input type="number" class="product-input"></td>
+                        <td><input type="number" class="product-input" readonly></td>
+                        <td><input type="number" class="product-input" step="0.01"></td>
+                        <td><input type="text" class="product-input"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-actions">
+                <button type="button" onclick="addProductRow()">+</button>
+            </div>
+            <div class="action-buttons">
+                <button type="submit" class="guardar">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/app.js"></script>
+</body>
+
+</html>

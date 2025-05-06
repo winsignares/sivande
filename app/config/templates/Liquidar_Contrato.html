@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidación Contrato</title>
+    <link rel="stylesheet" href="../static/css/liquidar_contrato.css">
+</head>
+
+<body>
+    <div class="vista-container">
+        <header>
+            <span class="home-icon" onclick="redirectToMenu()">🏠</span>
+            <h2>Liquidación Contrato</h2>
+        </header>
+        <div class="liquidacion-info">
+            <p>Realizado hace 2 meses y 23 días</p>
+        </div>
+        <form class="liquidacion-form">
+            <div class="input-pair">
+                <div class="input-group">
+                    <label for="mesesVencidos">Meses vencidos</label>
+                    <input type="number" id="mesesVencidos" name="mesesVencidos">
+                </div>
+                <div class="input-group">
+                    <label for="valorMesVencido">Valor mes vencido</label>
+                    <input type="number" id="valorMesVencido" name="valorMesVencido">
+                </div>
+            </div>
+            <div class="input-pair">
+                <div class="input-group">
+                    <label for="valorContrato">Valor contrato</label>
+                    <input type="number" id="valorContrato" name="valorContrato">
+                </div>
+                <div class="input-group">
+                    <label for="totalIntereses">Total intereses</label>
+                    <input type="number" id="totalIntereses" name="totalIntereses">
+                </div>
+            </div>
+            <div class="input-group full-width">
+                <label for="valorRestitucion">Valor restitución</label>
+                <input type="number" id="valorRestitucion" name="valorRestitucion">
+            </div>
+            <button type="submit" class="save-button">SAVE</button>
+        </form>
+    </div>
+    <script src="../static/js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+}
+
+.vista-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.home-icon {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.contratos-vigentes {
+    margin-top: 20px;
+}
+
+.contratos-vigentes table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.contratos-vigentes th {
+    background-color: #e9ecef;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.contratos-vigentes td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    text-align: left;
+}
+
+.contratos-vigentes .view-details {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contratos-vigentes .view-details:hover {
+    background-color: #0056b3;
+}
