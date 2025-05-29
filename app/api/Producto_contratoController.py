@@ -17,9 +17,9 @@ def registrar_producto_contrato():
     id_producto = request.json['id_producto']
     id_contrato = request.json['id_contrato']
     cantidad = request.json['cantidad']
-    precio = request.json['precio']
+    total = request.json['total']
 
-    nuevo_producto_contrato = Producto_contrato(id_producto, id_contrato, cantidad, precio)
+    nuevo_producto_contrato = Producto_contrato(id_contrato,id_producto, cantidad,total)
     db.session.add(nuevo_producto_contrato)
     db.session.commit()
     return f" producto contrato {id_producto} {id_contrato} Guardado Correctamente"
