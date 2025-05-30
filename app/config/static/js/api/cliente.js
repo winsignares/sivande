@@ -1,14 +1,16 @@
 import { apiPost } from "../util/serviceHttp";
 
 
-export const crearCliente = async (nombre, apellido, email, telefono, direccion) => {
+export const crearCliente = async (cedula, nombre, apellido, telefono, direccion, fechaExp, rol="usuario") => {
 
     const data = {
         nombre,
         apellido,
-        email,
+        cedula,
         telefono,
-        direccion
+        direccion,
+        rol,
+        fechaExp
     }
 
     return await apiPost('http://localhost:3000/api/registrarUsuario', data);
