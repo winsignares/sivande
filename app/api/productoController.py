@@ -20,8 +20,9 @@ def registrar_producto():
     precio = request.json['precio']
     peso = request.json['peso']
     kilates = request.json['kilates']
+    stock = request.json.get('stock', 0)  # Default stock to 0 if not provided
 
-    nuevo_producto = Producto(descripcion, precio, peso, kilates)
+    nuevo_producto = Producto(descripcion, precio, peso, kilates, stock)
     db.session.add(nuevo_producto)
     db.session.commit()
     return f" producto Guardado Correctamente"

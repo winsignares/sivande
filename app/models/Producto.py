@@ -9,13 +9,14 @@ class Producto(db.Model):
     precio = db.Column(db.Float)
     peso = db.Column(db.Float)
     kilates = db.Column(db.String(255))
+    stock = db.Column(db.Integer, default=0)
     
-    def __init__(self, descripcion, precio, peso, kilates):
+    def __init__(self, descripcion, precio, peso, kilates, stock):
         self.descripcion = descripcion
         self.precio = precio
         self.peso = peso
         self.kilates = kilates
-
+        self.stock = stock
 with app.app_context():
     db.create_all()
 
