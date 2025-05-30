@@ -14,7 +14,7 @@ export const crearProducto = async (descripcion,precio,peso,kilates, stock) => {
     }
 
     
-   return await apiPost('http://localhost:3000/api/auth/login' ,data)
+   return await apiPost('http://localhost:3000/api/registrarProducto' ,data)
 
     ;
 }
