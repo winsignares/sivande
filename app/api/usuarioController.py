@@ -9,6 +9,32 @@ ruta_usuario =  Blueprint("ruta_usuario", __name__)
 usuarioSchema = UsuarioSchema()
 usuariosSchema = UsuarioSchema(many=True)
 
+
+@ruta_usuario.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    cedula = data.get('cedula')
+    contrasena = data.get('contraseña')
+
+    if not cedula or not contrasena:
+        return jsonify({"mensaje": "Faltan datos"}), 400
+
+    usuario = Usuario.query.filter_by(cedula=cedula).first()
+
+    if usuario and usuario.contraseña == contrasena:
+        return jsonify({
+            "mensaje": "Inicio de sesión exitoso",
+            "usuario": {
+                "cedula": usuario.cedula,
+                "nombre": usuario.nombre,
+                "apellido": usuario.apellido,
+                "rol": usuario.rol
+            }
+        }), 200
+    else:
+        return jsonify({"mensaje": "Credenciales incorrectas"}), 401
+
+
 @ruta_usuario.route("/usuarios", methods=["GET"])
 def all_usuario():
     resultAll = Usuario.query.all()
