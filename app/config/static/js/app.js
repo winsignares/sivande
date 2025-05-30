@@ -1,4 +1,4 @@
-function redirectToMenu() {
+ export function redirectToMenu() {
     window.location.href = "menu";
 }
 
@@ -13,16 +13,6 @@ function resetForm(formClass) {
     document.querySelector(`.${formClass}`).reset();
 }
 
-function login() {
-    // Simulación de autenticación 
-    const usuario = document.getElementById('usuario').value;
-    const contrasena = document.getElementById('contrasena').value;
-    if (usuario && contrasena) {
-        redirectToMenu();
-    } else {
-        alert('Por favor, ingrese usuario y contraseña.');
-    }
-}
 
 function addArticleRow() {
     const tbody = document.querySelector('tbody');
