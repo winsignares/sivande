@@ -1,3 +1,4 @@
+from datetime import date
 from config.db import db, app, ma
 
 class Usuario(db.Model):
@@ -9,6 +10,7 @@ class Usuario(db.Model):
     direccion = db.Column(db.String(255))
     rol = db.Column(db.String(255))
     telefono = db.Column(db.Integer)
+    contraseña = db.Column(db.String(255)) 
     fecha_expedicion = db.Column(db.Date)
     
     def __init__(self, cedula, nombre, apellido, direccion, rol, telefono, fecha_expedicion):
@@ -22,6 +24,25 @@ class Usuario(db.Model):
         
 with app.app_context():
     db.create_all()
+     # Verificar si el usuario ya existe para evitar duplicados
+    usuario_existente = Usuario.query.filter_by(cedula=1020).first()
+    
+    if not usuario_existente:
+        usuario = Usuario(
+            cedula=1020,
+            contraseña="12345",
+            nombre="Juan",
+            apellido="Pérez",
+            direccion="Calle 123",
+            rol="admin",
+            telefono=3001234567,
+            fecha_expedicion=date(2010, 5, 20)
+        )
+        db.session.add(usuario)
+        db.session.commit()
+        print("✅ Usuario insertado correctamente.")
+    else:
+        print("ℹ️ El usuario ya existe.")
     
 class UsuarioSchema(ma.Schema):
     class Meta:
