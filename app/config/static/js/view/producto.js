@@ -22,6 +22,13 @@ function producto() {
       const resp =  crearProducto(descripcion, precio, peso, kilates, stock);
         console.log(resp);
       document.getElementById("successModal").classList.remove("hidden");
+
+      document.getElementById('desc').value = '';
+      document.getElementById('precio').value = ''; 
+      document.getElementById('peso').value = '';
+      document.getElementById('kilates').value = '';
+      document.getElementById('stock').value = '';
+      document.getElementById('desc').focus();
         
     } catch (error) {
         
