@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint, request, redirect, render_template, jsonify
+from app.models import Producto_contrato
 from config.db import app, db, ma
 
 from models.Contrato import Contrato, ContratoSchema
@@ -14,21 +15,53 @@ def all_contrato():
     respo = contratosSchema.dump(resultAll)
     return jsonify(respo)
 
+# @ruta_contrato.route("/registrarContrato", methods=['POST'])
+# def registrar_contrato():
+#     id_cliente = request.json['id_cliente']
+#     tipo_contrato = request.json['tipo_contrato']
+#     fecha = request.json['fecha']
+#     fecha_vencimiento = request.json['fecha_vencimiento']
+#     estado = request.json['estado']
+#     interes = request.json['interes']
+#     valor_contrato = request.json['valor_contrato']
+#     valor_retiro = request.json['valor_retiro']
+
+#     nuevo_contrato = Contrato(id_cliente, tipo_contrato, fecha, fecha_vencimiento, estado, interes, valor_contrato, valor_retiro)
+#     db.session.add(nuevo_contrato)
+#     db.session.commit()
+#     return f" contrato Guardado Correctamente"
 @ruta_contrato.route("/registrarContrato", methods=['POST'])
 def registrar_contrato():
-    id_cliente = request.json['id_cliente']
-    tipo_contrato = request.json['tipo_contrato']
-    fecha = request.json['fecha']
-    fecha_vencimiento = request.json['fecha_vencimiento']
-    estado = request.json['estado']
-    interes = request.json['interes']
-    valor_contrato = request.json['valor_contrato']
-    valor_retiro = request.json['valor_retiro']
+    data = request.get_json()
 
+    # Datos del contrato
+    id_cliente = data['id_cliente']
+    tipo_contrato = data['tipo_contrato']
+    fecha = data['fecha']
+    fecha_vencimiento = data['fecha_vencimiento']
+    estado = data['estado']
+    interes = data['interes']
+    valor_contrato = data['valor_contrato']
+    valor_retiro = data['valor_retiro']
+
+    # Crear contrato
     nuevo_contrato = Contrato(id_cliente, tipo_contrato, fecha, fecha_vencimiento, estado, interes, valor_contrato, valor_retiro)
     db.session.add(nuevo_contrato)
+    db.session.commit()  # Guardamos para obtener el ID autogenerado
+
+    # Ahora guardamos los productos asociados
+    productos = data.get('productos', [])
+    for item in productos:
+        id_producto = item['id_producto']
+        cantidad = item['cantidad']
+        total = item['total']
+
+        producto_contrato = Producto_contrato(nuevo_contrato.id, id_producto, cantidad, total)
+        db.session.add(producto_contrato)
+
     db.session.commit()
-    return f" contrato Guardado Correctamente"
+
+    return jsonify({"mensaje": "Contrato y productos asociados guardados correctamente", "id_contrato": nuevo_contrato.id})
 
 
 
