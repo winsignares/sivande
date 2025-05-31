@@ -41,6 +41,20 @@ def all_usuario():
     respo = usuariosSchema.dump(resultAll)
     return jsonify(respo)
 
+@ruta_usuario.route("/getuser", methods=["GET"])
+def getByCedula():
+    cedula = request.args.get('cedula')
+    if not cedula:
+        return jsonify({"mensaje": "Cedula no proporcionada"}), 400
+    
+    if Usuario.query.filter_by(cedula=cedula).count() == 0:
+        return jsonify({"mensaje": "Usuario no encontrado"}), 404
+
+    usuario = Usuario.query.get(cedula)
+    if not usuario:
+        return jsonify({"mensaje": "Usuario no encontrado"}), 404
+
+    return jsonify(usuarioSchema.dump(usuario))
 
 @ruta_usuario.route("/registrarUsuario", methods=['POST'])
 def registrar_usuario():
@@ -78,6 +92,7 @@ def actualizar_usuario():
 
     db.session.commit()
     return jsonify(usuarioSchema.dump(usuario))
+
 
 
 

@@ -1,4 +1,4 @@
-import { apiPost } from "../util/serviceHttp";
+import { apiGet, apiPost } from "../util/serviceHttp";
 
 
 export const crearCliente = async (cedula, nombre, apellido, telefono, direccion, fechaExp, rol="usuario") => {
@@ -15,5 +15,20 @@ export const crearCliente = async (cedula, nombre, apellido, telefono, direccion
 
     return await apiPost('http://localhost:3000/api/registrarUsuario', data);
 
+
+}
+
+export const getByCedula = async (cedula) => {
+
+
+    const response = await apiGet(`http://localhost:3000/api/getuser?cedula=${cedula}`)
+
+    if (!response.ok) {
+       alert("el cliente no existe");
+    }
+    const data = await response.json();
+    console.log(data);
+    
+    return data;
 
 }

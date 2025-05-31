@@ -1,5 +1,7 @@
 import { crearCliente } from "../api/cliente";
 
+import { getByCedula } from "../api/cliente.js";
+
 // Esta función recoge los valores del formulario y los envía a crearCliente
 function cliente() {
     const cedula = document.getElementById('cedula').value.trim();
@@ -34,3 +36,35 @@ function cliente() {
         alert("Error al crear el cliente. Por favor, inténtalo de nuevo más tarde.");
     }
 }
+
+
+
+document.getElementById("cedula").addEventListener("keydown", async function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault(); // evita que el formulario se envíe
+
+        const cedula = e.target.value.trim();
+        if (!cedula) return;
+
+        try {
+            const cliente = await getByCedula(cedula);
+
+            if (!cliente) {
+                alert("Cliente no encontrado.");
+                return;
+            }
+
+            // Rellenar campos con los datos obtenidos
+            document.getElementById("expedicion").value = cliente.fecha_expedicion || "";
+            document.getElementById("nombres").value = cliente.nombre || "";
+            document.getElementById("apellidos").value = cliente.apellido || "";
+            document.getElementById("telefono").value = cliente.telefono || "";
+            document.getElementById("direccion").value = cliente.direccion || "";
+
+
+        } catch (error) {
+            console.error("Error al buscar el cliente:", error);
+            alert("Hubo un error al consultar la cédula. Intenta de nuevo.");
+        }
+    }
+});
