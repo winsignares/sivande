@@ -4,7 +4,7 @@ import { findById } from "../api/producto.js";
 
 
 // Esta función recoge los valores del formulario y los envía a crearProducto
-function producto() {
+export function producto() {
     const descripcion = document.getElementById('desc').value.trim();
     const precio = parseFloat(document.getElementById('precio').value);
     const peso = parseFloat(document.getElementById('peso').value);
@@ -39,30 +39,59 @@ function producto() {
 
 }
 
-document.getElementById("id_producto").addEventListener("keydown", async function (e) {
-  if (e.key === "Enter") {
-      e.preventDefault(); // Evita enviar formulario
+document.addEventListener("DOMContentLoaded", () => {
+    const tableBody = document.querySelector("#productosTable tbody");
 
-      const id = e.target.value.trim();
-      if (!id) return;
+    tableBody.addEventListener("keydown", async function (e) {
+        if (e.target.classList.contains("id_producto") && e.key === "Enter") {
+            e.preventDefault();
 
-      try {
-          const producto = await findById(id);
+            const row = e.target.closest("tr");
+            const idInput = row.querySelector(".id_producto");
+            const descInput = row.querySelector(".desc");
+            const kilatesInput = row.querySelector(".kilates");
+            const pesoInput = row.querySelector(".peso");
+            const stockInput = row.querySelector(".stock");
 
-          if (!producto) {
-              alert("Producto no encontrado.");
-              return;
-          }
+            const id = idInput.value.trim();
+            if (!id) return;
 
-          // Rellenar campos con los datos del producto
-          document.getElementById("desc").value = producto.descripcion || "";
-          document.getElementById("kilates").value = producto.kilates || "";
-          document.getElementById("peso").value = producto.peso || "";
-          document.getElementById("stock").value = producto.stock || "";
+            try {
+                const producto = await findById(id);
 
-      } catch (error) {
-          console.error("Error al buscar el producto:", error);
-          // alert("Hubo un error al consultar el producto. Intenta de nuevo.");
-      }
-  }
+                if (!producto) {
+                    alert("Producto no encontrado.");
+                    return;
+                }
+
+                // Rellenar la fila actual
+                descInput.value = producto.descripcion || "";
+                kilatesInput.value = producto.kilates || "";
+                pesoInput.value = producto.peso || "";
+                stockInput.value = producto.stock || "";
+
+                // Crear nueva fila vacía
+                const nuevaFila = document.createElement("tr");
+                nuevaFila.classList.add("producto-row");
+                nuevaFila.innerHTML = `
+                    <td><input type="text" class="id_producto" size="4"></td>
+                    <td><input type="text" class="desc"></td>
+                    <td><input type="text" class="kilates"></td>
+                    <td><input type="number" class="peso" step="0.01"></td>
+                    <td><input type="number" class="stock" step="0.01"></td>
+                `;
+                tableBody.appendChild(nuevaFila);
+
+                // Enfocar el ID de la nueva fila
+                nuevaFila.querySelector(".id_producto").focus();
+
+            } catch (error) {
+                console.error("Error al buscar producto:", error);
+                alert("Hubo un error al buscar el producto.");
+            }
+        }
+    });
 });
+
+
+

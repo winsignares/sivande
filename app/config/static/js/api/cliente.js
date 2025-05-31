@@ -13,7 +13,7 @@ export const crearCliente = async (cedula, nombre, apellido, telefono, direccion
         fechaExp
     }
 
-    return await apiPost('http://localhost:3000/api/registrarUsuario', data);
+    return await apiPost('http://localhost:5000/api/registrarUsuario', data);
 
 
 }
@@ -21,7 +21,7 @@ export const crearCliente = async (cedula, nombre, apellido, telefono, direccion
 export const getByCedula = async (cedula) => {
 
 
-    const response = await apiGet(`http://localhost:3000/api/getuser?cedula=${cedula}`)
+    const response = await apiGet(`http://localhost:5000/api/getuser?cedula=${cedula}`)
 
     if (!response.ok) {
        alert("el cliente no existe");
