@@ -33,12 +33,13 @@ function cliente() {
 
     } catch (error) {
         console.error("Error al crear el cliente:", error);
-        alert("Error al crear el cliente. Por favor, inténtalo de nuevo más tarde.");
+        // alert("Error al crear el cliente. Por favor, inténtalo de nuevo más tarde.");
     }
 }
 
 
 
+// // Asignar el evento al input de la cedula, para buscar el cliente al presionar Enter
 document.getElementById("cedula").addEventListener("keydown", async function (e) {
     if (e.key === "Enter") {
         e.preventDefault(); // evita que el formulario se envíe

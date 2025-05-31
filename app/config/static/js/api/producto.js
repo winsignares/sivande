@@ -1,4 +1,5 @@
 import { apiPost } from "../util/serviceHttp";
+import { apiGet } from "../util/serviceHttp";
 
 
 export const crearProducto = async (descripcion,precio,peso,kilates, stock) => {
@@ -18,3 +19,19 @@ export const crearProducto = async (descripcion,precio,peso,kilates, stock) => {
 
     ;
 }
+
+export const findById= async(id)=>{
+
+    const response = await apiGet(`http://localhost:3000/api/getproduct?id=${id}`)
+
+    if (!response.ok) {
+       alert("el producto no existe");
+    }
+    const data = await response.json();
+    console.log(data);
+    
+    return data;
+
+
+}
+

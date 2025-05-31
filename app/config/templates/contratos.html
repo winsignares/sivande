@@ -90,18 +90,20 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>No.</th>
+                            <th>Id</th>
                             <th>Descripción del artículo</th>
-                            <th>Clase Oro</th>
+                            <th>kilates</th>
                             <th>Peso</th>
+                            <th>stock</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td><input type="text" class="article-input"></td>
-                            <td><input type="text" class="article-input"></td>
-                            <td><input type="number" class="article-input" step="0.01"></td>
+                            <td><input type="text" id="id_producto" name="id_producto" size="4"></td>
+                            <td><input type="text" class="article-input" id="dec" name="desc"></td>
+                            <td><input type="text" class="article-input" id="kilates" name="kilates"></td>
+                            <td><input type="number" class="article-input" step="0.01" id="peso" name="peso"></td>
+                            <td><input type="number" class="article-input" step="0.01" id="stock" name="stock"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -119,6 +121,8 @@
         </form>
     </div>
     <script src="../static/js/app.js"></script>
+    <script src="../static/js/view/producto.js"></script>
+    <script src="../static/js/view/cliente.js"></script>
 
 </body>
 

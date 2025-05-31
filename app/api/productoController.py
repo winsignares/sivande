@@ -14,6 +14,18 @@ def all_producto():
     respo = productosSchema.dump(resultAll)
     return jsonify(respo)
 
+@ruta_producto.route("/getproduct", methods=["GET"]) 
+def get_producto():
+    
+    id = request.args.get('id')
+    if not id:
+        return jsonify({"message": "ID no proporcionado"}), 400
+    
+    producto = Producto.query.get(id)
+    if not producto:
+        return jsonify({"message": "Producto no encontrado"}), 404
+    return jsonify(productoSchema.dump(producto))
+
 @ruta_producto.route("/registrarProducto", methods=['POST'])
 def registrar_producto():
     descripcion = request.json['descripcion']
