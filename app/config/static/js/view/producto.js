@@ -3,6 +3,14 @@ import { crearProducto } from "../api/producto.js";
 import { findById } from "../api/producto.js";
 
 
+document.getElementById("sendProduct").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Llamar a la función producto para procesar el formulario
+    producto();
+})
+
+
 // Esta función recoge los valores del formulario y los envía a crearProducto
 export function producto() {
     const descripcion = document.getElementById('desc').value.trim();
@@ -40,9 +48,20 @@ export function producto() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+
+
+    
+
+    if (!window.location.href.includes("contrato")) {
+        console.log("holaaa");
+        return; 
+        
+    }
+    
     const tableBody = document.querySelector("#productosTable tbody");
 
-    tableBody.addEventListener("keydown", async function (e) {
+    tableBody?.addEventListener("keydown", async function (e) {
         if (e.target.classList.contains("id_producto") && e.key === "Enter") {
             e.preventDefault();
 
