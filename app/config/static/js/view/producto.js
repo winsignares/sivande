@@ -3,7 +3,7 @@ import { crearProducto } from "../api/producto.js";
 import { findById } from "../api/producto.js";
 
 
-document.getElementById("sendProduct").addEventListener("click", function (e) {
+document.getElementById("sendProduct")?.addEventListener("click", function (e) {
     e.preventDefault();
 
     // Llamar a la función producto para procesar el formulario
@@ -48,66 +48,49 @@ export function producto() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
-
-
-    
+ 
 
     if (!window.location.href.includes("contrato")) {
-        console.log("holaaa");
+      
         return; 
         
     }
+
+
+    console.log("Inicializando la funcionalidad de productos...");
+    
     
     const tableBody = document.querySelector("#productosTable tbody");
 
     tableBody?.addEventListener("keydown", async function (e) {
-        if (e.target.classList.contains("id_producto") && e.key === "Enter") {
+        if (e.target.classList.contains("peso") && e.key === "Enter") {
             e.preventDefault();
 
+
+            
             const row = e.target.closest("tr");
-            const idInput = row.querySelector(".id_producto");
             const descInput = row.querySelector(".desc");
             const kilatesInput = row.querySelector(".kilates");
             const pesoInput = row.querySelector(".peso");
-            const stockInput = row.querySelector(".stock");
 
-            const id = idInput.value.trim();
-            if (!id) return;
 
-            try {
-                const producto = await findById(id);
-
-                if (!producto) {
-                    alert("Producto no encontrado.");
-                    return;
-                }
-
-                // Rellenar la fila actual
-                descInput.value = producto.descripcion || "";
-                kilatesInput.value = producto.kilates || "";
-                pesoInput.value = producto.peso || "";
-                stockInput.value = producto.stock || "";
 
                 // Crear nueva fila vacía
                 const nuevaFila = document.createElement("tr");
                 nuevaFila.classList.add("producto-row");
                 nuevaFila.innerHTML = `
-                    <td><input type="text" class="id_producto" size="4"></td>
+                   
                     <td><input type="text" class="desc"></td>
                     <td><input type="text" class="kilates"></td>
                     <td><input type="number" class="peso" step="0.01"></td>
-                    <td><input type="number" class="stock" step="0.01"></td>
+                  
                 `;
                 tableBody.appendChild(nuevaFila);
 
                 // Enfocar el ID de la nueva fila
-                nuevaFila.querySelector(".id_producto").focus();
+            nuevaFila.querySelector(".desc").focus();
 
-            } catch (error) {
-                console.error("Error al buscar producto:", error);
-                alert("Hubo un error al buscar el producto.");
-            }
+         
         }
     });
 });
