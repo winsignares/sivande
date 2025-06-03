@@ -72,3 +72,13 @@ h2 {
 .menu-buttons button:nth-child(3):hover {
     background-color: #0056b3;
 }
+
+.menu-buttons button:nth-child(4) {
+    padding: 10px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    background-color: #800080;
+}
