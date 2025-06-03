@@ -1,15 +1,22 @@
-import { apiLogin } from "../api/auth";
-import { redirectToMenu } from "../app";
+import { apiLogin } from "../api/auth.js";
+import { redirectToMenu } from "../app.js";
 
 
-const form = Document.getElementById('formulario-inicio-sesion');
+
+
+const form = document.getElementById('formulario-inicio-sesion');
+
+
+
 
 const login = () =>{
 
+    console.log(form.cedula);
+    
     const cedula = form.cedula.value;
     const contraseña = form.contrasena.value;
 
-    if (usuario && contrasena) {
+    if (cedula && contrasena) {
 
 
         try{
@@ -28,3 +35,8 @@ const login = () =>{
     }
 
 }
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    login();
+});

@@ -1,6 +1,5 @@
 from flask import Flask, Blueprint, request, redirect, render_template, jsonify
-from app.models import Producto_contrato
-from config.db import app, db, ma
+from config.db import db, ma
 from models.Producto import Producto 
 from models.Contrato import Contrato, ContratoSchema
 
@@ -33,6 +32,9 @@ def all_contrato():
 
 @ruta_contrato.route("/registrarContrato", methods=['POST'])
 def registrar_contrato():
+
+    from app.models import Producto_contrato
+
     data = request.get_json()
 
     # Datos del contrato

@@ -1,5 +1,5 @@
 from flask import Flask, Blueprint, request, redirect, render_template, jsonify
-from config.db import app, db, ma
+from config.db import  db, ma
 
 from models.Producto_contrato import Producto_contrato, Producto_contratoSchema
 ruta_producto_contrato = Blueprint("ruta_producto_contrato", __name__)

@@ -30,14 +30,14 @@ with app.app_context():
     if not usuario_existente:
         usuario = Usuario(
             cedula=1020,
-            contraseña="12345",
             nombre="Juan",
             apellido="Pérez",
             direccion="Calle 123",
             rol="admin",
-            telefono=3001234567,
+            telefono=30012,
             fecha_expedicion=date(2010, 5, 20)
         )
+        usuario.contraseña ="12345"
         db.session.add(usuario)
         db.session.commit()
         print("✅ Usuario insertado correctamente.")

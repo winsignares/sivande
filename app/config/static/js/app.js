@@ -1,4 +1,4 @@
- export function redirectToMenu() {
+export function redirectToMenu() {
     window.location.href = "menu";
 }
 

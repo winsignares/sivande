@@ -11,19 +11,19 @@
 <body>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
-        <form class="login-form" onsubmit="event.preventDefault()">
+        <form class="login-form" id="formulario-inicio-sesion">
             <div class="input-group">
                 <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" name="usuario" required>
+                <input type="text" id="cedula" name="cedula" required>
             </div>
             <div class="input-group">
                 <label for="contrasena">Contraseña:</label>
                 <input type="password" id="contrasena" name="contrasena" required>
             </div>
-            <button onclick="login()" type="submit">Ingresar</button>
+            <button  type="submit">Ingresar</button>
         </form>
     </div>
-    <script src="../static/js/view/InicioSesion.js"></script>
+    <script type="module" src="../static/js/view/InicioSesion.js"></script>
 
 </body>
 

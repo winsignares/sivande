@@ -1,4 +1,4 @@
-import { apiPost } from "../util/serviceHttp"
+import { apiPost } from "../util/serviceHttp.js"
 
 
 export const apiLogin = async (cedula, contraseña) => {
@@ -9,7 +9,7 @@ export const apiLogin = async (cedula, contraseña) => {
     }
 
     
-   return await apiPost('http://localhost:5000/api/auth/login' ,data)
+   return await apiPost('http://localhost:5000/api/login' ,data)
 
     ;
 }
