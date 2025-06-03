@@ -66,3 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Exponer explícitamente al HTML
 window.redirectToVista = redirectToVista;
+
+// Para hacerla accesible globalmente:
+window.redirectToMenu = redirectToMenu;

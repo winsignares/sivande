@@ -16,7 +16,7 @@
             <span class="home-icon" onclick="redirectToMenu()">🏠</span>
             <h2>Gestión de Clientes</h2>
         </header>
-        <form class="clientes-form">
+        <form class="clientes-form" id="clientes-form">
             <div class="input-group">
                 <label for="cedula">Cédula</label>
                 <input type="text" id="cedula" name="cedula">
@@ -43,7 +43,7 @@
             </div>
             <div class="action-buttons">
                 <button type="submit" class="guardar">Guardar Cliente</button>
-                <button type="button" class="nuevo" onclick="crearCliente()">Nuevo Cliente</button>
+
             </div>
         </form>
     </div>
@@ -66,8 +66,8 @@
                 <polyline points="16.5,23.5 21.5,28.5 32,18" stroke="#10e36c" stroke-width="3" fill="none"/>
               </svg>
             </div>
-            <h4 class="text-xl text-gray-100 font-semibold mb-3">
-              Cliente agregado correctamente
+            <h4 class="text-xl text-gray-100 font-semibold mb-3" id="successMessage">
+             
             </h4>
           </div>
           <div class="pb-6 px-6 text-center bg-gray-800">
@@ -90,6 +90,8 @@
       </script>
 
     <script type="module" src="../static/js/view/cliente.js"></script>
+    <script type="module" src="../static/js/app.js"></script>
+
 </body>
 
 </html>

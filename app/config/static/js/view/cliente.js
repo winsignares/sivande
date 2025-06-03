@@ -2,8 +2,10 @@ import { crearCliente } from "../api/cliente.js";
 
 import { getByCedula } from "../api/cliente.js";
 
+
+
 // Esta función recoge los valores del formulario y los envía a crearCliente
-function cliente() {
+async function crear() {
     const cedula = document.getElementById('cedula').value.trim();
     const nombre = document.getElementById('nombre').value.trim();
     const apellido = document.getElementById('apellido').value.trim();
@@ -18,8 +20,9 @@ function cliente() {
     }
 
     try {
-        const resp = crearCliente(cedula, nombre, apellido, telefono, direccion, fechaExp);
-        console.log(resp);
+        const resp = await crearCliente(cedula, nombre, apellido, telefono, direccion, fechaExp);
+ 
+        document.getElementById("successMessage").textContent = resp.mensaje;
         document.getElementById("successModal").classList.remove("hidden");
 
         // Limpiar campos
@@ -68,4 +71,9 @@ document.getElementById("cedula").addEventListener("keydown", async function (e)
             alert("Hubo un error al consultar la cédula. Intenta de nuevo.");
         }
     }
+});
+
+document.getElementById("clientes-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+    crear(); // Llama a la función cliente para procesar los datos
 });
