@@ -69,7 +69,7 @@ def registrar_usuario():
     nuevo_usuario = Usuario(cedula, nombre, apellido, direccion, rol, telefono, fecha_expedicion)
     db.session.add(nuevo_usuario)
     db.session.commit()
-    return jsonify({"mensaje": f"usuario {nombre} {apellido} guardado con éxito"})
+    return jsonify({"mensaje": f"Usuario {nombre} {apellido} guardado con éxito"})
 
 
 @ruta_usuario.route("/actualizarUsuario", methods=['PUT'])
