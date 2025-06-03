@@ -55,8 +55,12 @@ document.getElementById("cedula").addEventListener("keydown", async function (e)
         if (!cedula) return;
 
         try {
-            const cliente = await getByCedula(cedula);
+            const response = await getByCedula(cedula);
 
+            const cliente = await response.json();
+
+            console.log("Cliente : "+cliente);
+            
             if (!cliente) {
                 alert("Cliente no encontrado.");
                 return;
@@ -77,7 +81,7 @@ document.getElementById("cedula").addEventListener("keydown", async function (e)
     }
 });
 
-document.getElementById("clientes-form").addEventListener("submit", function (e) {
+document.getElementById("clientes-form")?.addEventListener("submit", function (e) {
     e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
     crear(); // Llama a la función cliente para procesar los datos
 });

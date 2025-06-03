@@ -1,5 +1,5 @@
-import { apiPost } from "../util/serviceHttp";
-import { apiGet } from "../util/serviceHttp";
+import { apiPost } from "../util/serviceHttp.js";
+import { apiGet } from "../util/serviceHttp.js";
 
 
 export const crearProducto = async (descripcion,precio,peso,kilates, stock) => {

@@ -1,4 +1,4 @@
-import { crearProducto } from "../api/producto";
+import { crearProducto } from "../api/producto.js";
 
 import { findById } from "../api/producto.js";
 

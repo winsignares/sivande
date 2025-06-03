@@ -11,13 +11,9 @@ export const apiGet = async (url ) =>{
         }
     });
 
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    console.log(data);
+   
     
-    return data;
+    return response;
 
 
 
@@ -34,9 +30,6 @@ export const apiPost = async (url, body) => {
         body: JSON.stringify(body)
     });
 
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
     return response;
 
 }
