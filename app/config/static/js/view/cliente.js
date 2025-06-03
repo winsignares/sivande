@@ -21,8 +21,12 @@ async function crear() {
 
     try {
         const resp = await crearCliente(cedula, nombre, apellido, telefono, direccion, fechaExp);
- 
-        document.getElementById("successMessage").textContent = resp.mensaje;
+
+        const dataRes = await resp.json();
+        
+        console.log(dataRes);
+        
+        document.getElementById("successMessage").textContent = dataRes.mensaje || "Cliente creado exitosamente.";
         document.getElementById("successModal").classList.remove("hidden");
 
         // Limpiar campos

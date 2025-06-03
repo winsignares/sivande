@@ -5,11 +5,13 @@ export const apiLogin = async (cedula, contraseña) => {
 
     const data = {
         cedula,
-        contraseña
+        contraseña,
     }
 
-    
-   return await apiPost('http://localhost:5000/api/login' ,data)
+    const response = await apiPost('http://localhost:5000/api/login', data);
+
+    return response;
+
 
     ;
 }

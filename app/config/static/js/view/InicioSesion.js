@@ -9,9 +9,9 @@ const form = document.getElementById('formulario-inicio-sesion');
 
 
 
-const login = () =>{
+const  login = async () =>{
 
-    console.log(form.cedula);
+
     
     const cedula = form.cedula.value;
     const contraseña = form.contrasena.value;
@@ -21,8 +21,16 @@ const login = () =>{
 
         try{
             // Llamada a la API para iniciar sesión
-            console.log(apiLogin(cedula, contraseña)); 
-            redirectToMenu();
+            const response = await apiLogin(cedula, contraseña)
+            
+            console.log('Respuesta de la API:', response.status);
+            
+            if (response.ok) {
+                redirectToMenu();
+                
+            }
+            
+            
 
         } catch(error) {
             console.error('Error al iniciar sesión:', error);
