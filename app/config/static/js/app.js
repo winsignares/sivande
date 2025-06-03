@@ -2,7 +2,7 @@ export function redirectToMenu() {
     window.location.href = "menu";
 }
 
-function redirectToVista(vista) {
+export function redirectToVista(vista) {
     window.location.href = vista;
 
     console.log("RUTA : "+window.location.href);
@@ -63,3 +63,6 @@ function updateTotal(row) {
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('table tbody tr').forEach(row => updateTotal(row));
 });
+
+// Exponer explícitamente al HTML
+window.redirectToVista = redirectToVista;
