@@ -1,4 +1,4 @@
-import { apiGet, apiPost } from "../util/serviceHttp";
+import { apiGet, apiPost } from "../util/serviceHttp.js";
 
 
 export const crearCliente = async (cedula, nombre, apellido, telefono, direccion, fechaExp, rol="usuario") => {

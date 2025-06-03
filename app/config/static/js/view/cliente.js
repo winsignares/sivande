@@ -1,4 +1,4 @@
-import { crearCliente } from "../api/cliente";
+import { crearCliente } from "../api/cliente.js";
 
 import { getByCedula } from "../api/cliente.js";
 
