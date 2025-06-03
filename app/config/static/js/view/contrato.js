@@ -1,4 +1,31 @@
-import { crearContrato } from "../api/contrato";
+import { crearContrato } from "../api/contrato.js";
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+document.getElementById("fechaContrato").value = new Date().toISOString().split('T')[0];
+document.getElementById("venceContrato").value = new Date(new Date().setMonth(new Date().getMonth() + 4)).toISOString().split('T')[0];
+
+})
+
+
+const form = document.getElementById("contratos-form");
+
+
+document.getElementById("valorContrato").addEventListener("keydown", (e) => {
+
+    // console.log("Valor del contrato:", e.target.value);
+    
+    const valorContrato = parseFloat(e.target.value);
+    const porcentaje = parseFloat(document.getElementById("porcentaje").value);
+
+    if(porcentaje < 0 || isNaN(porcentaje)) {
+        alert("Porcentaje de interés no puede ser negativo o inválido.");
+        return;
+    }
+    const valorRestitucion = valorContrato + (valorContrato * (porcentaje / 100));
+    document.getElementById("valorRestitucion").value = valorRestitucion.toFixed(2);
+})
 
 document.querySelector('.guardar').addEventListener('click', function (e) {
     e.preventDefault();

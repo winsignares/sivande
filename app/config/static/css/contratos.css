@@ -185,6 +185,19 @@ th {
     border: none;
     cursor: pointer;
 }
+.producto-row input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none   ;
+}
+
+
+
+
 
 .action-buttons .guardar {
     background-color: #007bff;
