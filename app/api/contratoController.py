@@ -1,7 +1,9 @@
 from flask import Flask, Blueprint, request, redirect, render_template, jsonify
 from config.db import db, ma
 from models.Producto import Producto 
+from models.Producto_contrato import Producto_contrato
 from models.Contrato import Contrato, ContratoSchema
+
 
 ruta_contrato =  Blueprint("ruta_contrato", __name__)
 
@@ -33,7 +35,6 @@ def all_contrato():
 @ruta_contrato.route("/registrarContrato", methods=['POST'])
 def registrar_contrato():
 
-    from app.models import Producto_contrato
 
     data = request.get_json()
 
@@ -52,9 +53,13 @@ def registrar_contrato():
     db.session.add(nuevo_contrato)
     db.session.commit()  # Guardamos para obtener el ID
 
-    # Guardar productos asociados (calculando total automáticamente)
+
+    
     productos = data.get('productos', [])
-    for item in productos:
+
+    if tipo_contrato!="empeño":
+    # Guardar productos asociados (calculando total automáticamente)
+     for item in productos:
         id_producto = item['id_producto']
         cantidad = item['cantidad']
 
@@ -66,7 +71,14 @@ def registrar_contrato():
 
         producto_contrato = Producto_contrato(nuevo_contrato.id, id_producto, cantidad, total)
         db.session.add(producto_contrato)
-
+    else:
+       for item in productos:
+          desc = item["descripcion"]
+          kilates = item["kilates"] 
+          peso = item["peso"]  
+          producto = Producto(desc, 0, peso, kilates, 0)
+          db.session.add(producto)  
+        
     db.session.commit()
 
     return jsonify({"mensaje": "Contrato y productos asociados guardados correctamente", "id_contrato": nuevo_contrato.id})

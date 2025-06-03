@@ -38,7 +38,8 @@ document.querySelector('.guardar').addEventListener('click', function (e) {
         tipo_contrato: "empeño", // valor fijo
         fecha: document.getElementById('fechaContrato').value,
         fecha_vencimiento: document.getElementById('venceContrato').value,
-        estado: document.getElementById('estadoContrato').value,
+        // estado: document.getElementById('estadoContrato').value,
+        estado: "activo", // valor fijo
         interes: parseFloat(document.getElementById('porcentaje').value),
         valor_contrato: parseFloat(document.getElementById('valorContrato').value),
         valor_retiro: parseFloat(document.getElementById('valorRestitucion').value),
@@ -47,16 +48,16 @@ document.querySelector('.guardar').addEventListener('click', function (e) {
 
     const filas = document.querySelectorAll('.producto-row');
     filas.forEach(fila => {
-        const idProducto = parseInt(fila.querySelector('input[name="id_producto"]').value);
-        const peso = parseFloat(fila.querySelector('input[name="peso"]').value);
 
-        if (!isNaN(idProducto) && !isNaN(peso)) {
+        const descripcion = fila.querySelector('.desc').value;
+        const kilates = parseFloat(fila.querySelector('.kilates').value);
+        const peso = parseFloat(fila.querySelector('.peso').value);
             data.productos.push({
-                id_producto: idProducto,
-                cantidad: 1 // solo se registra una unidad por fila
+                descripcion: descripcion,
+                kilates: isNaN(kilates) ? 0 : kilates,
+                peso: isNaN(peso) ? 0 : peso
                 
             });
-        }
     });
 
 

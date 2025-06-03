@@ -1,4 +1,4 @@
-from config.db import db, app, ma
+from config.db import db,  ma
 
 class Contrato(db.Model):
     __tablename__ ='tbl_contratos'
@@ -24,8 +24,8 @@ class Contrato(db.Model):
         self.valor_retiro = valor_retiro
         
         
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 class ContratoSchema(ma.Schema):
     class Meta:
