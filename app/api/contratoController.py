@@ -92,7 +92,8 @@ def registrar_contrato():
           db.session.add(producto)
           db.session.commit()  
           producto_contrato = Producto_contrato(nuevo_contrato.id, producto.id, 0, 0)
-        
+          db.session.add(producto_contrato)
+            
     db.session.commit()
 
     return jsonify({"mensaje": "Contrato y productos asociados guardados correctamente", "id_contrato": nuevo_contrato.id})
