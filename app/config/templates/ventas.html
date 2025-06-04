@@ -14,11 +14,11 @@
             <span class="home-icon" onclick="redirectToMenu()">🏠</span>
             <h2>Venta de productos</h2>
         </header>
-        <form class="ventas-form">
+        <form class="ventas-form" id="ventas-form">
             <!-- Identificación -->
             <div class="input-group">
                 <label for="identificacion">Identificación</label>
-                <input type="text" id="identificacion" name="identificacion">
+                <input type="text" id="cedula" name="cedula">
             </div>
 
             <!-- Datos del cliente -->
@@ -27,7 +27,7 @@
                 <div class="client-info">
                     <div class="input-group">
                         <label>Nombre completo</label>
-                        <input type="text" id="nombreCompleto" name="nombreCompleto">
+                        <input type="text" id="nombre" name="nombre">
                     </div>
                     <div class="input-group">
                         <label>Teléfono</label>
@@ -61,7 +61,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td><input type="text" class="id_producto"></td>
                             <td><input type="text" class="product-input"></td>
                             <td><input type="number" class="product-input" value="1"></td>
                             <td><input type="number" class="product-input"></td>
@@ -72,19 +72,19 @@
                     </tbody>
                 </table>
                 <div class="table-actions">
-                    <button type="button" onclick="addProductRow()">+</button>
+                    <button type="button" >+</button>
                 </div>
             </div>
 
             <!-- Botones de acción -->
             <div class="action-buttons">
-                <button type="button" class="cancelar">Cancelar</button>
+                <!-- <button type="button" class="cancelar">Cancelar</button> -->
                 <button type="button" class="imprimir">Imprimir PDF</button>
                 <button type="submit" class="guardar">Guardar venta</button>
             </div>
         </form>
     </div>
-    <script src="../static/js/app.js"></script>
+    <script type="module" src="../static/js/view/ventas.js"></script>
 
 </body>
 
