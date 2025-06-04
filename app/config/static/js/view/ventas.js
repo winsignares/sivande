@@ -62,29 +62,25 @@ const crear = async ()=>{
     let total_calculado = 0;
     const filas = document.querySelectorAll('.producto-row');
     filas.forEach(fila => {
-        const descripcion = fila.querySelector('.desc').value;
-        const cantidad = parseInt(fila.querySelector('.cant').value);
-        const precio = parseFloat(fila.querySelector('.precio').value);
-        const kilates = parseFloat(fila.querySelector('.kilates').value);
+        
 
         const peso = parseFloat(fila.querySelector('.peso').value);
 
         total_calculado += cantidad * precio;
 
-        if (descripcion && cantidad > 0 && precio > 0) {
+        // if (descripcion && cantidad > 0 && precio > 0) {
             data.productos.push({
-                descripcion: descripcion,
-                cantidad: cantidad,
-                precio: precio,
-                kilates: isNaN(kilates) ? 0 : kilates,
-                peso: isNaN(peso) ? 0 : peso
+                id_producto: fila.querySelector('.id_producto').value.trim(),
+                cantidad:  parseInt(fila.querySelector('.cant').value)
             });
-        }
+        // }
 
       
 
       
     });
+
+    data.valor_contrato = total_calculado;
 
     try {
 
