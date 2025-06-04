@@ -37,7 +37,12 @@ document.getElementById("valorContrato").addEventListener("keydown", (e) => {
         alert("Porcentaje de interés no puede ser negativo o inválido.");
         return;
     }
+
+    console.log(valorContrato);
+    console.log(porcentaje);
+    
     const valorRestitucion = valorContrato + (valorContrato * (porcentaje / 100));
+    console.log(valorRestitucion);
     document.getElementById("valorRestitucion").value = valorRestitucion;
 })
 
