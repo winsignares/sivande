@@ -1,5 +1,5 @@
 import { getByCedula } from "../api/cliente.js";
-import { apiPost } from "../util/serviceHttp";
+import { apiPost } from "../util/serviceHttp.js";
 import { findById } from "../api/producto.js";
 
 const form = document.getElementById("ventas-form");
