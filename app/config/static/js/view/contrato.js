@@ -38,7 +38,7 @@ document.getElementById("valorContrato").addEventListener("keydown", (e) => {
         return;
     }
     const valorRestitucion = valorContrato + (valorContrato * (porcentaje / 100));
-    document.getElementById("valorRestitucion").value = valorRestitucion.toFixed(2);
+    document.getElementById("valorRestitucion").value = valorRestitucion;
 })
 
 document.querySelector('.guardar').addEventListener('click', function (e) {
