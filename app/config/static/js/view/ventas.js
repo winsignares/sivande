@@ -7,7 +7,7 @@ const form = document.getElementById("ventas-form");
 document.getElementById("fechaVenta").value = new Date().toISOString().split('T')[0]; // Establece la fecha actual
 
 
-form.cedula.addEventListener("keydown", async()=>{
+form.cedula.addEventListener("keydown", async(e)=>{
 
     if(e.key === "Enter"){
 
@@ -112,7 +112,7 @@ form.addEventListener("submit",(e) => {
     crear();
 });
 
-document.getElementById("producto-row").addEventListener("keydown", async(e) => {
+document.getElementById("productos-list").addEventListener("keydown", async(e) => {
 
     if(e.target.classList.contains("id_producto") && e.key === "Enter"){
 
