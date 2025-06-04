@@ -25,7 +25,7 @@ form.cedula.addEventListener("keydown", async(e)=>{
             }
 
             // Rellenar campos con los datos obtenidos
-            form.nombres.value = `${cliente.nombre} ${cliente.apellido}` || "";
+            form.nombre.value = `${cliente.nombre} ${cliente.apellido}` || "";
             form.telefono.value = cliente.telefono || "";
             form.direccion.value = cliente.direccion || "";
 
