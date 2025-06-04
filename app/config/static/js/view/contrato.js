@@ -1,3 +1,4 @@
+import { getByCedula } from "../api/cliente.js";
 import { crearContrato } from "../api/contrato.js";
 
 
@@ -75,4 +76,37 @@ document.querySelector('.guardar').addEventListener('click', function (e) {
 
 function resetContratoForm() {
     document.querySelector('.contratos-form').reset();
+}
+
+export const llenarTablaContratos = async (contrato ) =>{
+
+    const responseCliente = await getByCedula(contrato.id_cliente);
+    
+    const cliente = await responseCliente.json();
+    
+    //primero llenamod los datos del cliente
+    document.getElementById("cedula").value = cliente.cedula;
+    document.getElementById("nombre").value = cliente.nombre;
+    document.getElementById("apellido").value = cliente.apellido;
+    document.getElementById("telefono").value = cliente.telefono;
+    document.getElementById("direccion").value = cliente.direccion;
+    document.getElementById("expedicion").value = cliente.fecha_expedicion 
+
+    // luego llenamos los datos del contrato
+    document.getElementById("fechaContrato").value = contrato.fecha;
+    document.getElementById("venceContrato").value = contrato.fecha_vencimiento;
+    document.getElementById("valorContrato").value = contrato.valor_contrato.toFixed(2);
+    document.getElementById("porcentaje").value = contrato.interes.toFixed(2);
+    document.getElementById("valorRestitucion").value = contrato.valor_retiro.toFixed(2);
+    document.getElementById("estadoContrato").value = contrato.estado;
+    document.getElementById("idContrato").value = contrato.id;
+    
+
+
+
+    
+
+
+
+
 }

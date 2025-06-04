@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, request, redirect, render_template, jsonify
 from config.db import  db, ma
 
 from models.Producto import Producto, ProductoSchema
+from models.Producto_contrato import Producto_contrato
 
 ruta_producto =  Blueprint("ruta_producto", __name__)
 
@@ -64,3 +65,25 @@ def eliminar_producto():
     db.session.delete(producto)
     db.session.commit()
     return f"Producto {producto.descripcion} eliminado correctamente"
+
+@ruta_producto.route("/productos/contrato/<int:id_contrato>", methods=["GET"])
+def get_productos_por_contrato(id_contrato):
+    """
+    Devuelve todos los objetos Producto asociados al contrato `id_contrato`.
+    Se hace un JOIN entre Producto_contrato y Producto para traer los datos completos del producto.
+    """
+    # Hacemos join: buscamos todos los Productos cuya relación en tbl_productos_contratos
+    # tenga id_contrato == id_contrato
+    productos = (
+        db.session
+        .query(Producto)
+        .join(Producto_contrato, Producto.id == Producto_contrato.id_producto)
+        .filter(Producto_contrato.id_contrato == id_contrato)
+        .all()
+    )
+
+    if not productos:
+        return jsonify({"message": "No se encontraron productos para este contrato"}), 404
+
+    resultado = productosSchema.dump(productos)
+    return jsonify(resultado), 200

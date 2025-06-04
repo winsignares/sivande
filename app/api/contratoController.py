@@ -10,6 +10,18 @@ ruta_contrato =  Blueprint("ruta_contrato", __name__)
 contratoSchema = ContratoSchema()
 contratosSchema = ContratoSchema(many=True)
 
+@ruta_contrato.route("/getcontrato", methods=["GET"])
+def findById():
+    
+    id_contrato = request.args.get('id_contrato')
+    if not id_contrato:
+        return jsonify({"mensaje": "ID de contrato no proporcionado"}), 400
+    contrato = Contrato.query.get(id_contrato)
+    if not contrato:
+        return jsonify({"mensaje": "Contrato no encontrado"}), 404
+    return jsonify(contratoSchema.dump(contrato))
+    
+
 @ruta_contrato.route("/contratos", methods=["GET"])
 def all_contrato():
     resultAll = Contrato.query.all()
@@ -77,7 +89,9 @@ def registrar_contrato():
           kilates = item["kilates"] 
           peso = item["peso"]  
           producto = Producto(desc, 0, peso, kilates, 0)
-          db.session.add(producto)  
+          db.session.add(producto)
+          db.session.commit()  
+          producto_contrato = Producto_contrato(nuevo_contrato.id, producto.id, 0, 0)
         
     db.session.commit()
 
