@@ -63,6 +63,11 @@ const crear = async ()=>{
     const filas = document.querySelectorAll('.producto-row');
     filas.forEach(fila => {
 
+        if (!fila.querySelector('.id_producto').value.trim()) {
+            return; // Si no hay ID de producto, no procesar esta fila
+            
+        }
+
         const cantidad = parseInt(fila.querySelector('.cant').value);
         const precio = parseFloat(fila.querySelector('.precio').value);
  
