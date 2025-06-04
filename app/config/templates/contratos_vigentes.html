@@ -21,34 +21,18 @@
                         <th>Contrato</th>
                         <th>Fecha</th>
                         <th>Vence</th>
-                        <!-- <th>Item</th> -->
                         <th>Valor</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>#1234</td>
-                        <td>10/21/2022</td>
-                        <td>11/21/2022</td>
-                        <!-- <td>Rolex Watch</td> -->
-                        <td>$2,000</td>
-                        <td><button class="view-details">View Details</button></td>
-                    </tr>
-                    
+                <tbody id="contratos-list">
+                
                 </tbody>
             </table>
         </div>
     </div>
-    <script src="../static/js/app.js"></script>
-    <script>
-        // Función para los botones "View Details"
-        document.querySelectorAll('.view-details').forEach(button => {
-            button.addEventListener('click', function () {
-                alert('Detalles del contrato seleccionados. Implementa la lógica aquí.');
-            });
-        });
-    </script>
+    <script type="module" src="../static/js/view/contratos_vigentes.js"></script>
+    
 </body>
 
 </html>
