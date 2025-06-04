@@ -62,16 +62,18 @@ const crear = async ()=>{
     let total_calculado = 0;
     const filas = document.querySelectorAll('.producto-row');
     filas.forEach(fila => {
-        
 
-        const peso = parseFloat(fila.querySelector('.peso').value);
+        const cantidad = parseInt(fila.querySelector('.cant').value);
+        const precio = parseFloat(fila.querySelector('.precio').value);
+ 
+
 
         total_calculado += cantidad * precio;
 
         // if (descripcion && cantidad > 0 && precio > 0) {
             data.productos.push({
                 id_producto: fila.querySelector('.id_producto').value.trim(),
-                cantidad:  parseInt(fila.querySelector('.cant').value)
+                cantidad: cantidad,
             });
         // }
 
