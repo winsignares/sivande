@@ -1,5 +1,6 @@
 import { getByCedula } from "../api/cliente.js";
 import { apiPost } from "../util/serviceHttp";
+import { findById } from "../api/producto.js";
 
 const form = document.getElementById("ventas-form");
 
@@ -105,3 +106,55 @@ const crear = async ()=>{
      }
 
 }
+
+form.addEventListener("submit",(e) => {
+    e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+    crear();
+});
+
+document.getElementById("producto-row").addEventListener("keydown", async(e) => {
+
+    if(e.target.classList.contains("id_producto") && e.key === "Enter"){
+
+        e.preventDefault(); // Evita que el formulario se envíe
+
+        const idProducto = e.target.value.trim();
+        const producto = await findById(idProducto);
+
+        //llenar los campos del producto
+        if (producto) {
+            const row = e.target.closest("tr");
+            row.querySelector(".desc").value = producto.descripcion || "";
+            row.querySelector(".precio").value = producto.precio || 0;
+            row.querySelector(".peso").value = producto.peso || 0;
+            row.querySelector(".kilates").value = producto.kilates || 0;
+            row.querySelector(".cant").focus(); // Mover el foco al campo de cantidad
+
+            //crear nueva fila
+
+            const nuevaFila = document.createElement("tr");
+            nuevaFila.classList.add("producto-row");
+
+            nuevaFila.innerHTML = `
+                            <td><input type="text" class="product-input id_producto"></td>
+                            <td><input type="text" class="product-input desc"></td>
+                            <td><input type="number" class="product-input cant" value="1"></td>
+                            <td><input type="number" class="product-input precio"></td>
+                            <!-- <td><input type="number" class="product-input" readonly></td> -->
+                            <td><input type="number" class="product-input peso" step="0.01"></td>
+                            <td><input type="text" class="product-input kilates"></td>
+            
+            `
+                
+            const tbody = document.getElementById("productos-list");
+            tbody.appendChild(nuevaFila);
+
+
+        } else {
+            alert("Producto no encontrado.");
+        }
+
+    }
+
+
+})

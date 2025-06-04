@@ -1,6 +1,5 @@
 import { crearProducto } from "../api/producto.js";
 
-import { findById } from "../api/producto.js";
 
 
 document.getElementById("sendProduct")?.addEventListener("click", function (e) {
