@@ -1,6 +1,19 @@
 import { getByCedula } from "../api/cliente.js";
 import { crearContrato } from "../api/contrato.js";
 
+import { apiGet } from "../util/serviceHttp.js";
+
+
+const getProductos = async (id_contrato) => {
+
+    const response = await apiGet(`http://localhost:5000/productos/contrato/${id_contrato}`);
+
+
+    const data = await response.json();
+    return data;
+
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -102,8 +115,24 @@ export const llenarTablaContratos = async (contrato ) =>{
     document.getElementById("idContrato").value = contrato.id;
     
 
+    const productos = await getProductos(contrato.id);
+    
+    //ahora llenamos los productos del contrato
 
-
+    const tbody = document.getElementById("productosBody");
+    tbody.innerHTML = ''; // Limpiar la tabla antes de agregar los productos
+    
+    productos.forEach((producto) => {
+        const row = document.createElement('tr');
+        row.classList.add('producto-row');
+        row.innerHTML = `
+            <td>${producto.id}</td>
+            <td><input type="text" class="desc" value="${producto.descripcion}" required></td>
+            <td><input type="number" class="kilates" value="${producto.kilates}" step="0.01" required></td>
+            <td><input type="number" class="peso" value="${producto.peso}" step="0.01" required></td>
+        `;
+        tbody.appendChild(row);
+    })
     
 
 

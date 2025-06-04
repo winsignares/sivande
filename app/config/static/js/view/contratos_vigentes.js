@@ -7,7 +7,7 @@ import { llenarTablaContratos } from "./contrato.js";
 
 
 
-const findContratosVigentes = async (data) => {
+const findContratosVigentes = async () => {
     try {
         const response = await apiGet("http://localhost:5000/api/contratos");
         const data = await response.json();
@@ -20,7 +20,7 @@ const findContratosVigentes = async (data) => {
 
 const findByIdContrato = async (id_contrato) => {
     try {
-        const response = await apiGet(`http://localhost:5000/api/getcontrato/${id_contrato}`);
+        const response = await apiGet(`http://localhost:5000/api/getcontrato?id_contrato     =${id_contrato}`);
         const data = await response.json();
         return data;
     } catch (error) {
