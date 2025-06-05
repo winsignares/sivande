@@ -101,8 +101,8 @@ document.addEventListener("click", async(event) => {
 
         const contrato = await findByIdContrato(id_contrato);
 
-        redirectToVista("contratos"); 
         llenarTablaContratos(contrato);
+        redirectToVista("contratos"); 
     }
 });
 
