@@ -25,11 +25,18 @@ document.addEventListener("DOMContentLoaded", () => {
         venceContrato.value = new Date(new Date().setMonth(new Date().getMonth() + 4)).toISOString().split('T')[0];
       } 
 
-document.getElementById("contratos-vigentes").addEventListener("click", () => {
+      const contratos_vigentes = document.getElementById("contratos-vigentes");
 
-    redirectToVista("contratos_vigentes");
+      if (contratos_vigentes) {
 
-})
+        document.getElementById("contratos-vigentes")?.addEventListener("click", () => {
+
+            redirectToVista("contratos_vigentes");
+        
+        })
+      }
+
+
 
 const form = document.getElementById("contratos-form");
 
@@ -52,7 +59,7 @@ document.getElementById("valorContrato").addEventListener("input", (e) => {
     document.getElementById("valorRestitucion").value = valorRestitucion;
 })
 
-form.addEventListener('submit', function (e) {
+form?.addEventListener('submit', function (e) {
     e.preventDefault();
 
     
