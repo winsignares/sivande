@@ -200,7 +200,6 @@ export const llenarTablaContratos = async (contrato ) =>{
         const row = document.createElement('tr');
         row.classList.add('producto-row');
         row.innerHTML = `
-            <td>${producto.id}</td>
             <td><input type="text" class="desc" value="${producto.descripcion}" required></td>
             <td><input type="number" class="kilates" value="${producto.kilates}" step="0.01" required></td>
             <td><input type="number" class="peso" value="${producto.peso}" step="0.01" required></td>
