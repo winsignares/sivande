@@ -38,11 +38,9 @@ document.getElementById("valorContrato").addEventListener("input", (e) => {
         return;
     }
 
-    console.log(valorContrato);
-    console.log(porcentaje);
     
     const valorRestitucion = valorContrato + (valorContrato * (porcentaje / 100));
-    console.log(valorRestitucion);
+   
     document.getElementById("valorRestitucion").value = valorRestitucion;
 })
 
