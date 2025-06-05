@@ -170,8 +170,8 @@ export const llenarTablaContratos = async (contrato ) =>{
     
     //primero llenamos los datos del cliente
     document.getElementById("cedula").value = cliente.cedula;
-    document.getElementById("nombre").value = cliente.nombre;
-    document.getElementById("apellido").value = cliente.apellido;
+    document.getElementById("nombres").value = cliente.nombre;
+    document.getElementById("apellidos").value = cliente.apellido;
     document.getElementById("telefono").value = cliente.telefono;
     document.getElementById("direccion").value = cliente.direccion;
     document.getElementById("expedicion").value = cliente.fecha_expedicion 
