@@ -152,7 +152,7 @@ export const llenarTablaContratos = async (contrato ) =>{
 
 }
 
-document.getElementById("contratos-vigentes").addEventListener("click", async () => {
+document.getElementById("contratos-vigentes").addEventListener("click", () => {
 
     redirectToVista("contratos_vigentes");
 

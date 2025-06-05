@@ -4,8 +4,6 @@ export function redirectToMenu() {
 
 export function redirectToVista(vista) {
     window.location.href = vista;
-
-    console.log("RUTA : "+window.location.href);
     
 }
 
