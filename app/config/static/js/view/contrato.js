@@ -26,10 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
       } 
 
       const contratos_vigentes = document.getElementById("contratos-vigentes");
+      const btn_liquidar = document.getElementById("btn_liquidar");
 
-      if (contratos_vigentes) {
-
-        document.getElementById("contratos-vigentes")?.addEventListener("click", async() => {
+      if (btn_liquidar) {
+        
+        btn_liquidar.addEventListener("click", async() => {
 
             const idContrato = document.getElementById("idContrato").value;
             const response = await getById(idContrato);
@@ -37,6 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             window.localStorage.setItem("contrato", JSON.stringify(contrato));
             redirectToVista("liquidar_contrato");
+
+        })
+      }
+
+      if (contratos_vigentes) {
+
+        document.getElementById("contratos-vigentes")?.addEventListener("click", async() => {
+
+            redirectToVista("contratos_vigentes");
 
         
         })
