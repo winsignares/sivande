@@ -155,6 +155,20 @@ form?.addEventListener('submit', function (e) {
          window.history.replaceState({}, document.title, window.location.pathname);
     }
 
+    const contrato = JSON.parse(localStorage.getItem("contratoLiquidado"));
+
+    if (contrato) {
+
+    console.log("Contratos:", contrato);
+    
+    llenarTablaContratos(contrato);
+    if( contrato.estado == "Liquidado") {
+        document.getElementById("btn_enviar").disabled = true;
+        document.getElementById("btn_liquidar").disabled = true;
+        localStorage.removeItem("contratoLiquidado");
+    }
+}
+
 
 })
 
@@ -214,15 +228,4 @@ export const llenarTablaContratos = async (contrato ) =>{
 }
 
 
-const contrato = JSON.parse(localStorage.getItem("contratoLiquidado"));
 
-if (contrato && contrato.id) {
-
-    console.log("Contratos:", contrato);
-    
-    llenarTablaContratos(contrato);
-    if( contrato.estado == "Liquidado") {
-        document.getElementById("btn_enviar").disabled = true;
-        document.getElementById("btn_liquidar").disabled = true;
-    }
-}
