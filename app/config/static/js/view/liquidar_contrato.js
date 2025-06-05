@@ -70,10 +70,10 @@ form.addEventListener("submit", async (e) => {
         document.getElementById("successModal").classList.remove("hidden");
         window.location.href = "contratos";
         localStorage.removeItem('contrato');
-        localStorage.setItem('contratoLiquidado', JSON.stringify(contratoActualizado));
+        // localStorage.setItem('contratoLiquidado', JSON.stringify(contratoActualizado));
         form.reset();
         text.innerHTML = "";
-        window.location.href = "contratos";
+        // window.location.href = "contratos";
     } else {
         alert("Error al liquidar el contrato");
     }

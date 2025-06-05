@@ -155,19 +155,19 @@ form?.addEventListener('submit', function (e) {
          window.history.replaceState({}, document.title, window.location.pathname);
     }
 
-    const contrato = JSON.parse(localStorage.getItem("contratoLiquidado"));
+//     const contrato = JSON.parse(localStorage.getItem("contratoLiquidado"));
 
-    if (contrato) {
+//     if (contrato) {
 
-    console.log("Contratos:", contrato);
+//     console.log("Contratos:", contrato);
     
-    llenarTablaContratos(contrato);
-    if( contrato.estado == "Liquidado") {
-        document.getElementById("btn_enviar").disabled = true;
-        document.getElementById("btn_liquidar").disabled = true;
-        localStorage.removeItem("contratoLiquidado");
-    }
-}
+//     llenarTablaContratos(contrato);
+//     if( contrato.estado == "Liquidado") {
+//         document.getElementById("btn_enviar").disabled = true;
+//         document.getElementById("btn_liquidar").disabled = true;
+//         localStorage.removeItem("contratoLiquidado");
+//     }
+// }
 
 
 })
