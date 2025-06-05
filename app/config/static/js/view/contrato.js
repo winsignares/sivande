@@ -189,7 +189,7 @@ export const llenarTablaContratos = async (contrato ) =>{
 }
 
 
-const contrato = JSON.parse(localStorage.getItem("contratoLiquidado"));s
+const contrato = JSON.parse(localStorage.getItem("contratoLiquidado"));
 
 if (contrato && contrato.id) {
 
