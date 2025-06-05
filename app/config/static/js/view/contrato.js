@@ -27,9 +27,6 @@ document.getElementById("contratos-vigentes").addEventListener("click", () => {
 
 })
 
-})
-
-
 const form = document.getElementById("contratos-form");
 
 
@@ -50,8 +47,6 @@ document.getElementById("valorContrato").addEventListener("input", (e) => {
    
     document.getElementById("valorRestitucion").value = valorRestitucion;
 })
-
-
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -103,6 +98,13 @@ form.addEventListener('submit', function (e) {
         alert("Error al crear el contrato. Por favor, inténtelo de nuevo más tarde.");
     }
 });
+
+
+})
+
+
+
+
 
 
 function resetContratoForm() {
