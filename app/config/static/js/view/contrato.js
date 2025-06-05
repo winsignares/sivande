@@ -21,6 +21,9 @@ const getProductos = async (id_contrato) => {
 
     const response = await apiGet(`http://localhost:5000/productos/contrato/${id_contrato}`);
 
+    if (!response.ok) {
+        alert("Error al obtener los productos del contrato. Por favor, inténtelo de nuevo más tarde.");
+    }
 
     const data = await response.json();
     return data;
