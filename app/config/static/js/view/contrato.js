@@ -21,6 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("fechaContrato").value = new Date().toISOString().split('T')[0];
 document.getElementById("venceContrato").value = new Date(new Date().setMonth(new Date().getMonth() + 4)).toISOString().split('T')[0];
 
+document.getElementById("contratos-vigentes").addEventListener("click", () => {
+
+    redirectToVista("contratos_vigentes");
+
+})
+
 })
 
 
@@ -151,9 +157,3 @@ export const llenarTablaContratos = async (contrato ) =>{
 
 
 }
-
-document.getElementById("contratos-vigentes").addEventListener("click", () => {
-
-    redirectToVista("contratos_vigentes");
-
-})
