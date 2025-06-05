@@ -5,6 +5,18 @@ import { redirectToVista } from "../app.js";
 import { apiGet } from "../util/serviceHttp.js";
 
 
+const findByIdContrato = async (id_contrato) => {
+    try {
+        const response = await apiGet(`http://localhost:5000/api/getcontrato?id_contrato=${id_contrato}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching contrato by ID:", error);
+        throw error;
+    }
+}
+
+
 const getProductos = async (id_contrato) => {
 
     const response = await apiGet(`http://localhost:5000/productos/contrato/${id_contrato}`);
@@ -16,7 +28,7 @@ const getProductos = async (id_contrato) => {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async() => {
 
     const fechaContrato = document.getElementById("fechaContrato");
     const venceContrato = document.getElementById("venceContrato");
@@ -128,6 +140,17 @@ form?.addEventListener('submit', function (e) {
         alert("Error al crear el contrato. Por favor, inténtelo de nuevo más tarde.");
     }
 });
+
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (id) {
+        const contrato = await findByIdContrato(id);
+        llenarTablaContratos(contrato);
+         // Limpiar el ID de la URL sin recargar
+         window.history.replaceState({}, document.title, window.location.pathname);
+    }
 
 
 })

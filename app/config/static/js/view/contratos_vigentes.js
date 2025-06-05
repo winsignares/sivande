@@ -2,7 +2,7 @@
 
 import { apiGet } from "../util/serviceHttp.js";
 
-import { redirectToVista } from "../app.js";
+
 import { llenarTablaContratos } from "./contrato.js";
 
 
@@ -101,8 +101,9 @@ document.addEventListener("click", async(event) => {
 
         const contrato = await findByIdContrato(id_contrato);
 
-        llenarTablaContratos(contrato);
-        redirectToVista("contratos"); 
+        window.location.href = `contratos.html?id=${id_contrato}`;
+
+
     }
 });
 
