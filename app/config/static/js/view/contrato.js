@@ -40,25 +40,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const form = document.getElementById("contratos-form");
 
+const valorContrato = document.getElementById("valorContrato");
 
-document.getElementById("valorContrato").addEventListener("input", (e) => {
+      if (valorContrato) {
+        document.getElementById("valorContrato").addEventListener("input", (e) => {
 
-    // console.log("Valor del contrato:", e.target.value);
-    
-    const valorContrato = parseFloat(document.getElementById("valorContrato").value);
-    const porcentaje = parseFloat(document.getElementById("porcentaje").value);
-
-    if(porcentaje < 0 || isNaN(porcentaje)) {
-        alert("Porcentaje de interés no puede ser negativo o inválido.");
-        return;
-    }
-
-    
-    const valorRestitucion = valorContrato + (valorContrato * (porcentaje / 100));
-   
-    document.getElementById("valorRestitucion").value = valorRestitucion;
-})
-
+            // console.log("Valor del contrato:", e.target.value);
+            
+            const valorContrato = parseFloat(document.getElementById("valorContrato").value);
+            const porcentaje = parseFloat(document.getElementById("porcentaje").value);
+        
+            if(porcentaje < 0 || isNaN(porcentaje)) {
+                alert("Porcentaje de interés no puede ser negativo o inválido.");
+                return;
+            }
+        
+            
+            const valorRestitucion = valorContrato + (valorContrato * (porcentaje / 100));
+           
+            document.getElementById("valorRestitucion").value = valorRestitucion;
+        })
+        
+      }
 form?.addEventListener('submit', function (e) {
     e.preventDefault();
 
