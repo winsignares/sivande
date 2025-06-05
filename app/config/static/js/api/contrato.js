@@ -1,4 +1,4 @@
-import { apiPost, apiPut } from "../util/serviceHttp.js";
+import { apiGet, apiPost } from "../util/serviceHttp.js";
 
 
 export const crearContrato = async(data) =>{
@@ -14,6 +14,6 @@ export const actualizarContrato = async(data) =>{
 
 export const getById = async (id)=>{
 
-    return await apiPost(`http://localhost:5000/api/getcontrato?id_contrato=${id}`);
+    return await apiGet(`http://localhost:5000/api/getcontrato?id_contrato=${id}`);
 
 }
