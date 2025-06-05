@@ -47,7 +47,7 @@ const llenarTablaContratosVigentes = async () => {
 
 
         const body =document.getElementById("contratos-list")
-        body = "";
+        body.innerHTML = ""; // Limpiar el contenido previo de la tabla
         
         contratos.foreach(contrato =>{ 
 
