@@ -75,7 +75,7 @@ const valorContrato = document.getElementById("valorContrato");
 
             // console.log("Valor del contrato:", e.target.value);
             
-            const valorContrato = parseFloat(document.getElementById("valorContrato").value);
+            const valorContrato = parseInt(document.getElementById("valorContrato").value);
             const porcentaje = parseInt(document.getElementById("porcentaje").value);
         
             if(porcentaje < 0 || isNaN(porcentaje)) {
