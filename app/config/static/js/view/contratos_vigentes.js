@@ -20,7 +20,7 @@ const findContratosVigentes = async () => {
 
 const findByIdContrato = async (id_contrato) => {
     try {
-        const response = await apiGet(`http://localhost:5000/api/getcontrato?id_contrato     =${id_contrato}`);
+        const response = await apiGet(`http://localhost:5000/api/getcontrato?id_contrato=${id_contrato}`);
         const data = await response.json();
         return data;
     } catch (error) {
