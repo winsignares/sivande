@@ -202,7 +202,7 @@ export const llenarTablaContratos = async (contrato ) =>{
     document.getElementById("estadoContrato").value = contrato.estado;
     document.getElementById("idContrato").value = contrato.id;
     
-
+    
     const productos = await getProductos(contrato.id);
     
     //ahora llenamos los productos del contrato

@@ -1,4 +1,4 @@
-from config.db import db, ma
+from config.db import db, ma,app
 
 class Producto_contrato(db.Model):
     
@@ -17,8 +17,8 @@ class Producto_contrato(db.Model):
         self.cantidad = cantidad
         self.total = total
         
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
     
 class Producto_contratoSchema(ma.Schema):
     class Meta:

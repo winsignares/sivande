@@ -28,12 +28,14 @@ const  login = async () =>{
             if (response.ok) {
                 redirectToMenu();
                 
+            } else {
+                alert('Credenciales incorrectas. Por favor, verifique e intente de nuevo.');
             }
             
             
 
         } catch(error) {
-            console.error('Error al iniciar sesión:', error);
+            //console.error('Error al iniciar sesión:', error);
             alert('Error al iniciar sesión. Por favor, inténtelo de nuevo más tarde.');
             return;
         }

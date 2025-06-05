@@ -1,4 +1,4 @@
-from config.db import db, ma
+from config.db import db, ma,app
 
 
 class Producto(db.Model):
@@ -18,8 +18,8 @@ class Producto(db.Model):
         self.kilates = kilates
         self.stock = stock
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+     db.create_all()
 
 class ProductoSchema(ma.Schema):
     class Meta:
