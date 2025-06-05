@@ -26,7 +26,7 @@ document.getElementById("venceContrato").value = new Date(new Date().setMonth(ne
 const form = document.getElementById("contratos-form");
 
 
-document.getElementById("valorContrato").addEventListener("keydown", (e) => {
+document.getElementById("valorContrato").addEventListener("input", (e) => {
 
     // console.log("Valor del contrato:", e.target.value);
     
