@@ -31,6 +31,11 @@ const findByIdContrato = async (id_contrato) => {
 
 
 const llenarTablaContratosVigentes = async () => {
+
+
+    console.log("llenando tabla contratos vigentes...");
+    
+
     try {
         const contratos = await findContratosVigentes();
 
