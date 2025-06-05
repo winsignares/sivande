@@ -98,7 +98,20 @@ def registrar_contrato():
 
     return jsonify({"mensaje": "Contrato y productos asociados guardados correctamente", "id_contrato": nuevo_contrato.id})
 
+@ruta_contrato.route("/actualizarEstado", methods=['PUT'])
+def actualizarEstado():
+    
+    id_contrato = request.json['id']
+    estado = request.json['estado']
 
+    contrato = Contrato.query.get(id_contrato)
+    if not contrato:
+        return jsonify({"mensaje": "Contrato no encontrado"}), 404
+
+    contrato.estado = estado
+    db.session.commit()
+    
+    return jsonify(contratoSchema.dump(contrato))
 
 @ruta_contrato.route("/actualizarContrato", methods=['PUT'])
 def actualizar():

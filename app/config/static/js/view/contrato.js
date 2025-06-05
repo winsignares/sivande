@@ -175,3 +175,15 @@ export const llenarTablaContratos = async (contrato ) =>{
 
 
 }
+
+
+const contrato = JSON.parse(localStorage.getItem("contrato"));
+
+if (contrato) {
+
+    llenarTablaContratos(contrato);
+    if( contrato.estado == "Liquidado") {
+        document.getElementById("btn_enviar").disabled = true;
+        document.getElementById("btn_liquidar").disabled = true;
+    }
+}

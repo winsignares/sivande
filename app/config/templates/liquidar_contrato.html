@@ -17,7 +17,7 @@
         <div class="liquidacion-info">
             <p id="content_text"></p>
         </div>
-        <form class="liquidacion-form">
+        <form class="liquidacion-form" id="liquidacion-form">
             <div class="input-pair">
                 <div class="input-group">
                     <label for="mesesVencidos">Meses vencidos</label>
@@ -45,6 +45,48 @@
             <button type="submit" class="save-button">SAVE</button>
         </form>
     </div>
+
+
+     <!-- Modal overlay -->
+     <div id="successModal" class="fixed inset-0 flex items-center justify-center bg-black/30 z-50 hidden">
+        <!-- Modal content -->
+        <div class="max-w-md w-full mx-auto bg-gray-900 rounded-xl overflow-hidden shadow-lg">
+          <div class="pt-12 pb-8 px-5 text-center">
+            <div class="inline-flex items-center justify-center w-12 h-12 mb-5 rounded-full">
+              <!-- Ícono de éxito -->
+              <svg viewBox="0 0 48 48" height="80" width="80" xmlns="http://www.w3.org/2000/svg">
+                <linearGradient id="SVGID_1_" x1="37.081" x2="10.918" y1="10.918" y2="37.081" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#60fea4"/>
+                  <stop offset="1" stop-color="#fff"/>
+                </linearGradient>
+                <circle fill="url(#SVGID_1_)" cx="24" cy="24" r="18.5"/>
+                <path d="M35.4,38.8C32.2,41.2,28.3,42.7,24,42.7C13.7,42.7,5.3,34.3,5.3,24c0-2.6,0.6-5.2,1.5-7.4" stroke="#10e36c" stroke-width="3" fill="none"/>
+                <path d="M12.1,9.6C15.3,7,19.5,5.3,24,5.3c10.3,0,18.7,8.4,18.7,18.7c0,2.3-0.4,4.5-1.2,6.6" stroke="#10e36c" stroke-width="3" fill="none"/>
+                <polyline points="16.5,23.5 21.5,28.5 32,18" stroke="#10e36c" stroke-width="3" fill="none"/>
+              </svg>
+            </div>
+            <h4 class="text-xl text-gray-100 font-semibold mb-3" id="successMessage">
+             
+            </h4>
+          </div>
+          <div class="pb-6 px-6 text-center bg-gray-800">
+            <button onclick="closeModal()" class="w-full py-3 px-5 text-center font-semibold text-white bg-green-500 hover:bg-green-600 rounded-lg transition duration-200">
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        // function openModal() {
+        //   document.getElementById("successModal").classList.remove("hidden");
+        // }
+      
+        function closeModal() {
+          document.getElementById("successModal").classList.add("hidden");
+        }
+      
+      </script>
     <script src="../static/js/app.js"></script>
 </body>
 

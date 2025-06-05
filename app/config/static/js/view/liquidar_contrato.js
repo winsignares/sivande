@@ -1,3 +1,4 @@
+import { actualizarContrato } from "../api/contrato";
 
 
 const constratoStr = localStorage.getItem('contrato');
@@ -45,3 +46,28 @@ const llenarCampos = () => {
 llenarCampos();
 
 
+const form = document.getElementById("liquidacion-form")
+
+form.addEventListener("submit", async (e) => {
+
+    const data = {
+        id: contrato.id,
+        estado: "Liquidado",
+    }
+
+    const response = await actualizarContrato(data);
+    const contratoActualizado = response.json();
+
+    if (contratoActualizado) {
+        document.getElementById("successModal").classList.remove("hidden");
+        window.location.href = "contratos";
+        localStorage.removeItem('contrato');
+        localStorage.setItem('contratoLiquidado', JSON.stringify(contratoActualizado));
+        form.reset();
+        text.innerHTML = "";
+    } else {
+        alert("Error al liquidar el contrato");
+    }
+
+
+})
