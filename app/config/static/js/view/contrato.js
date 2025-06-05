@@ -1,5 +1,5 @@
 import { getByCedula } from "../api/cliente.js";
-import { crearContrato } from "../api/contrato.js";
+import { crearContrato, getById } from "../api/contrato.js";
 import { redirectToVista } from "../app.js";
 
 import { apiGet } from "../util/serviceHttp.js";
@@ -29,9 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (contratos_vigentes) {
 
-        document.getElementById("contratos-vigentes")?.addEventListener("click", () => {
+        document.getElementById("contratos-vigentes")?.addEventListener("click", async() => {
 
-            redirectToVista("contratos_vigentes");
+            const idContrato = document.getElementById("idContrato").value;
+            const response = await getById(idContrato);
+            const contrato = await response.json();
+
+            window.localStorage.setItem("contrato", JSON.stringify(contrato));
+            redirectToVista("liquidar_contrato");
+
         
         })
       }
@@ -115,10 +121,6 @@ form?.addEventListener('submit', function (e) {
 
 
 })
-
-
-
-
 
 
 function resetContratoForm() {

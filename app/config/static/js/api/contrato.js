@@ -6,3 +6,9 @@ export const crearContrato = async(data) =>{
     return await apiPost('http://localhost:5000/api/registrarContrato', data);
 
 }
+
+export const getById = async (id)=>{
+
+    return await apiPost(`http://localhost:5000/api/getcontrato?id_contrato=${id}`);
+
+}
