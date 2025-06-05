@@ -1,5 +1,6 @@
 import { getByCedula } from "../api/cliente.js";
 import { crearContrato } from "../api/contrato.js";
+import { redirectToVista } from "../app.js";
 
 import { apiGet } from "../util/serviceHttp.js";
 
@@ -150,3 +151,9 @@ export const llenarTablaContratos = async (contrato ) =>{
 
 
 }
+
+document.getElementById("contratos-vigentes").addEventListener("click", async () => {
+
+    redirectToVista("contratos_vigentes");
+
+})
