@@ -139,49 +139,52 @@ function resetContratoForm() {
 
 export const llenarTablaContratos = async (contrato ) =>{
 
-    console.log("llenando tabla contratos...");
+    document.addEventListener("DOMContentLoaded", async () => {
+        console.log("llenando tabla contratos...");
     
-    const responseCliente = await getByCedula(contrato.id_cliente);
+        const responseCliente = await getByCedula(contrato.id_cliente);
+        
+        const cliente = await responseCliente.json();
+        
+        //primero llenamos los datos del cliente
+        document.getElementById("cedula").value = cliente.cedula;
+        document.getElementById("nombre").value = cliente.nombre;
+        document.getElementById("apellido").value = cliente.apellido;
+        document.getElementById("telefono").value = cliente.telefono;
+        document.getElementById("direccion").value = cliente.direccion;
+        document.getElementById("expedicion").value = cliente.fecha_expedicion 
     
-    const cliente = await responseCliente.json();
+        // luego llenamos los datos del contrato
+        document.getElementById("fechaContrato").value = contrato.fecha;
+        document.getElementById("venceContrato").value = contrato.fecha_vencimiento;
+        document.getElementById("valorContrato").value = contrato.valor_contrato.toFixed(2);
+        document.getElementById("porcentaje").value = contrato.interes.toFixed(2);
+        document.getElementById("valorRestitucion").value = contrato.valor_retiro.toFixed(2);
+        document.getElementById("estadoContrato").value = contrato.estado;
+        document.getElementById("idContrato").value = contrato.id;
+        
     
-    //primero llenamos los datos del cliente
-    document.getElementById("cedula").value = cliente.cedula;
-    document.getElementById("nombre").value = cliente.nombre;
-    document.getElementById("apellido").value = cliente.apellido;
-    document.getElementById("telefono").value = cliente.telefono;
-    document.getElementById("direccion").value = cliente.direccion;
-    document.getElementById("expedicion").value = cliente.fecha_expedicion 
+        const productos = await getProductos(contrato.id);
+        
+        //ahora llenamos los productos del contrato
+    
+        const tbody = document.getElementById("productosBody");
+        tbody.innerHTML = ''; // Limpiar la tabla antes de agregar los productos
+        
+        productos.forEach((producto) => {
+            const row = document.createElement('tr');
+            row.classList.add('producto-row');
+            row.innerHTML = `
+                <td>${producto.id}</td>
+                <td><input type="text" class="desc" value="${producto.descripcion}" required></td>
+                <td><input type="number" class="kilates" value="${producto.kilates}" step="0.01" required></td>
+                <td><input type="number" class="peso" value="${producto.peso}" step="0.01" required></td>
+            `;
+            tbody.appendChild(row);
+        })
+        
 
-    // luego llenamos los datos del contrato
-    document.getElementById("fechaContrato").value = contrato.fecha;
-    document.getElementById("venceContrato").value = contrato.fecha_vencimiento;
-    document.getElementById("valorContrato").value = contrato.valor_contrato.toFixed(2);
-    document.getElementById("porcentaje").value = contrato.interes.toFixed(2);
-    document.getElementById("valorRestitucion").value = contrato.valor_retiro.toFixed(2);
-    document.getElementById("estadoContrato").value = contrato.estado;
-    document.getElementById("idContrato").value = contrato.id;
-    
-
-    const productos = await getProductos(contrato.id);
-    
-    //ahora llenamos los productos del contrato
-
-    const tbody = document.getElementById("productosBody");
-    tbody.innerHTML = ''; // Limpiar la tabla antes de agregar los productos
-    
-    productos.forEach((producto) => {
-        const row = document.createElement('tr');
-        row.classList.add('producto-row');
-        row.innerHTML = `
-            <td>${producto.id}</td>
-            <td><input type="text" class="desc" value="${producto.descripcion}" required></td>
-            <td><input type="number" class="kilates" value="${producto.kilates}" step="0.01" required></td>
-            <td><input type="number" class="peso" value="${producto.peso}" step="0.01" required></td>
-        `;
-        tbody.appendChild(row);
     })
-    
 
 
 
