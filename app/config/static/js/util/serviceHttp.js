@@ -33,3 +33,18 @@ export const apiPost = async (url, body) => {
     return response;
 
 }
+
+
+export const apiPut = async (url, body) => {
+    const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(body)
+    });
+
+    return response;
+
+}

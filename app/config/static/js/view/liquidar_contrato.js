@@ -1,4 +1,4 @@
-import { actualizarContrato } from "../api/contrato";
+import { actualizarContrato } from "../api/contrato.js";
 
 
 const constratoStr = localStorage.getItem('contrato');
