@@ -46,8 +46,14 @@ document.getElementById("valorContrato").addEventListener("input", (e) => {
     document.getElementById("valorRestitucion").value = valorRestitucion;
 })
 
-document.querySelector('.guardar').addEventListener('click', function (e) {
+form.addEventListener
+
+form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    
+
+
 
     const cedula = document.getElementById('cedula').value;
     const idCliente = parseInt(cedula); // asumiendo que la cédula es el ID del cliente
