@@ -139,11 +139,13 @@ function resetContratoForm() {
 
 export const llenarTablaContratos = async (contrato ) =>{
 
+    console.log("llenando tabla contratos...");
+    
     const responseCliente = await getByCedula(contrato.id_cliente);
     
     const cliente = await responseCliente.json();
     
-    //primero llenamod los datos del cliente
+    //primero llenamos los datos del cliente
     document.getElementById("cedula").value = cliente.cedula;
     document.getElementById("nombre").value = cliente.nombre;
     document.getElementById("apellido").value = cliente.apellido;
@@ -191,6 +193,8 @@ const contrato = JSON.parse(localStorage.getItem("contrato"));
 
 if (contrato) {
 
+    console.log("Contratos:", contrato);
+    
     llenarTablaContratos(contrato);
     if( contrato.estado == "Liquidado") {
         document.getElementById("btn_enviar").disabled = true;
