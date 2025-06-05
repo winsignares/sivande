@@ -30,7 +30,7 @@ document.getElementById("valorContrato").addEventListener("keydown", (e) => {
 
     // console.log("Valor del contrato:", e.target.value);
     
-    const valorContrato = parseFloat(e.target.value);
+    const valorContrato = parseFloat(document.getElementById("valorContrato").value);
     const porcentaje = parseFloat(document.getElementById("porcentaje").value);
 
     if(porcentaje < 0 || isNaN(porcentaje)) {
