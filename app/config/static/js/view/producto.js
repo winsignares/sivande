@@ -79,9 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 nuevaFila.classList.add("producto-row");
                 nuevaFila.innerHTML = `
                    
-                    <td><input type="text" class="desc"></td>
-                    <td><input type="text" class="kilates"></td>
-                    <td><input type="number" class="peso" step="0.01"></td>
+                    <td><input required type="text" class="desc"></td>
+                    <td><input required type="text" class="kilates"></td>
+                    <td><input required type="number" class="peso" step="0.01"></td>
                   
                 `;
                 tableBody.appendChild(nuevaFila);

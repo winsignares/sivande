@@ -46,7 +46,7 @@ document.getElementById("valorContrato").addEventListener("input", (e) => {
     document.getElementById("valorRestitucion").value = valorRestitucion;
 })
 
-form.addEventListener
+
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -73,6 +73,8 @@ form.addEventListener('submit', function (e) {
 
     const filas = document.querySelectorAll('.producto-row');
     filas.forEach(fila => {
+
+
 
         const descripcion = fila.querySelector('.desc').value;
         const kilates = parseFloat(fila.querySelector('.kilates').value);
