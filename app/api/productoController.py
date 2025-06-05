@@ -66,12 +66,16 @@ def eliminar_producto():
     db.session.commit()
     return f"Producto {producto.descripcion} eliminado correctamente"
 
-@ruta_producto.route("/productos/contrato/<int:id_contrato>", methods=["GET"])
-def get_productos_por_contrato(id_contrato):
+@ruta_producto.route("/productos/contrato", methods=["GET"])
+def get_productos_por_contrato():
     """
     Devuelve todos los objetos Producto asociados al contrato `id_contrato`.
     Se hace un JOIN entre Producto_contrato y Producto para traer los datos completos del producto.
     """
+    
+    id_contrato = request.args.get('id_contrato')
+    
+    print(f"ID del contrato recibido: {id_contrato}")
     # Hacemos join: buscamos todos los Productos cuya relación en tbl_productos_contratos
     # tenga id_contrato == id_contrato
     productos = (
