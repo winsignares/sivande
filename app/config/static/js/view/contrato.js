@@ -17,13 +17,13 @@ const getProductos = async (id_contrato) => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     const fechaContrato = document.getElementById("fechaContrato");
     const venceContrato = document.getElementById("venceContrato");
     if (fechaContrato && venceContrato) {
         fechaContrato.value = new Date().toISOString().split('T')[0];
         venceContrato.value = new Date(new Date().setMonth(new Date().getMonth() + 4)).toISOString().split('T')[0];
-      } e
+      } 
 
 document.getElementById("contratos-vigentes").addEventListener("click", () => {
 
