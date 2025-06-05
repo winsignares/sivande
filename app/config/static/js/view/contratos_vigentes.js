@@ -37,7 +37,7 @@ const llenarTablaContratosVigentes = async () => {
     
 
     try {
-        const contratos = await findContratosVigentes();
+        let contratos = await findContratosVigentes();
 
         if (!contratos || contratos.length === 0) {
             console.warn("No hay contratos vigentes para mostrar.");
@@ -49,7 +49,7 @@ const llenarTablaContratosVigentes = async () => {
         const body =document.getElementById("contratos-list")
         body.innerHTML = ""; // Limpiar el contenido previo de la tabla
         
-        contratos.forEach(contrato =>{ 
+        filteredContratos.forEach(contrato =>{ 
 
             const row = `
 
