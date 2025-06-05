@@ -44,7 +44,7 @@ const llenarTablaContratosVigentes = async () => {
             return;
         }
 
-        contratos.filter(contrato => contrato.tipo_contrato== "empeño" ); 
+        contratos = contratos.filter(contrato => contrato.tipo_contrato== "empeño" ); 
 
         const body =document.getElementById("contratos-list")
         body.innerHTML = ""; // Limpiar el contenido previo de la tabla
