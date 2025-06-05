@@ -76,22 +76,35 @@ const llenarTablaContratosVigentes = async () => {
 
 llenarTablaContratosVigentes();
 
-document.querySelectorAll(".view-details").forEach(button => {
-    button.addEventListener("click", (event) => {
+// document.querySelectorAll(".view-details").forEach(button => {
+//     button.addEventListener("click", (event) => {
         
         
-        id_contrato = event.target.closest("tr").querySelector("td:first-child").textContent;
+//         id_contrato = event.target.closest("tr").querySelector("td:first-child").textContent;
+//         console.log("ID del contrato:", id_contrato);
+        
+//         const contrato = findByIdContrato(id_contrato);
+        
+//         // llenar los campos del formulario con los datos del contrato
+//         redirectToVista("contratos"); 
+//         llenarTablaContratos(contrato);
+
+
+//     });
+// })
+
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("view-details")) {
+        const id_contrato = event.target.closest("tr").querySelector("td:first-child").textContent;
         console.log("ID del contrato:", id_contrato);
-        
+
         const contrato = findByIdContrato(id_contrato);
-        
-        // llenar los campos del formulario con los datos del contrato
+
         redirectToVista("contratos"); 
         llenarTablaContratos(contrato);
+    }
+});
 
-
-    });
-})
 
 
 
