@@ -93,15 +93,15 @@ llenarTablaContratosVigentes();
 //     });
 // })
 
-document.addEventListener("click", (event) => {
+document.addEventListener("click", async(event) => {
     if (event.target.classList.contains("view-details")) {
         const id_contrato = event.target.closest("tr").querySelector("td:first-child").textContent;
         console.log("ID del contrato:", id_contrato);
 
-        const contrato = findByIdContrato(id_contrato);
+        const contrato = await findByIdContrato(id_contrato);
 
-        redirectToVista("contratos"); 
         llenarTablaContratos(contrato);
+        redirectToVista("contratos"); 
     }
 });
 
