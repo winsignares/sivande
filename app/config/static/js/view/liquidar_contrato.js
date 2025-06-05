@@ -40,10 +40,10 @@ const llenarCampos = () => {
   } else{
         meses_vencidos.value = meses;
   }
+    total_interes.value = (contrato.valor_contrato * (contrato.interes / 100)) * meses_vencidos.value;
     valor_mese_vencido.value = contrato.valor_contrato * (contrato.interes / 100);
 
     valor_contrato.value = contrato.valor_contrato;
-    total_interes.value = (contrato.valor_contrato * (contrato.interes / 100)) * meses;
 
     valor_restitucion.value = contrato.valor_retiro + total_interes.value ;
 
