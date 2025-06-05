@@ -5,6 +5,7 @@ const constratoStr = localStorage.getItem('contrato');
 const contrato = JSON.parse(constratoStr);
 
 
+const text = document.getElementById("content_text");
 
 const llenarCampos = () => {
     const meses_vencidos = document.getElementById("mesesVencidos")
@@ -13,7 +14,6 @@ const llenarCampos = () => {
     const total_interes = document.getElementById("totalIntereses")
     const valor_restitucion = document.getElementById("valorRestitucion")
     
-    const text = document.getElementById("content_text");
     
     const fecha_contrato = new Date(contrato.fecha);
     const fecha_actual = new Date();
@@ -67,12 +67,12 @@ form.addEventListener("submit", async (e) => {
     const contratoActualizado = response.json();
 
     if (contratoActualizado) {
+        text.innerHTML = "";
         document.getElementById("successModal").classList.remove("hidden");
        
         localStorage.removeItem('contrato');
         // localStorage.setItem('contratoLiquidado', JSON.stringify(contratoActualizado));
         form.reset();
-        text.innerHTML = "";
         // window.location.href = "contratos";
     } else {
         alert("Error al liquidar el contrato");
