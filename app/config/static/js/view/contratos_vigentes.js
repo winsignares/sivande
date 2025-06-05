@@ -101,7 +101,7 @@ document.addEventListener("click", async(event) => {
 
         const contrato = await findByIdContrato(id_contrato);
 
-        window.location.href = `contratos.html?id=${id_contrato}`;
+        window.location.href = `contratos?id=${id_contrato}`;
 
 
     }
