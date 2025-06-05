@@ -1,4 +1,4 @@
-import { apiGet, apiPost } from "../util/serviceHttp.js";
+import { apiGet, apiPost, apiPut } from "../util/serviceHttp.js";
 
 
 export const crearContrato = async(data) =>{
