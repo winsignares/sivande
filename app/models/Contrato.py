@@ -9,9 +9,9 @@ class Contrato(db.Model):
     fecha = db.Column(db.Date)
     fecha_vencimiento = db.Column(db.Date)
     estado = db.Column(db.String(255))
-    interes = db.Column(db.Float)
-    valor_contrato = db.Column(db.Float)
-    valor_retiro = db.Column(db.Float)
+    interes = db.Column(db.Integer)
+    valor_contrato = db.Column(db.Integer)
+    valor_retiro = db.Column(db.Integer)
     
     def __init__(self, id_cliente, tipo_contrato, fecha, fecha_vencimiento, estado, interes, valor_contrato, valor_retiro):
         self.id_cliente = id_cliente
