@@ -56,6 +56,7 @@ llenarCampos();
 const form = document.getElementById("liquidacion-form")
 
 form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
     const data = {
         id: contrato.id,
