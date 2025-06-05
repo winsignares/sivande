@@ -68,7 +68,7 @@ form.addEventListener("submit", async (e) => {
 
     if (contratoActualizado) {
         document.getElementById("successModal").classList.remove("hidden");
-        window.location.href = "contratos";
+       
         localStorage.removeItem('contrato');
         // localStorage.setItem('contratoLiquidado', JSON.stringify(contratoActualizado));
         form.reset();
