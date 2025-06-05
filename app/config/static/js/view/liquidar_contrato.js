@@ -45,7 +45,8 @@ const llenarCampos = () => {
 
     valor_contrato.value = contrato.valor_contrato;
 
-    valor_restitucion.value = contrato.valor_retiro + total_interes.value ;
+
+    valor_restitucion.value = valor_contrato.value + total_interes.value;
 
 }
 
